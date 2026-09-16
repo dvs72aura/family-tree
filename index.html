@@ -6,8 +6,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--bg:#f4f6f9;--card:#fff;--text:#172033;--muted:#6b7280;--line:#d9dee8;--blue:#2563eb;--orange:#ea580c;--purple:#7c3aed;--green:#15803d;--danger:#dc2626;--shadow:0 8px 25px #00000012}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Georgian",sans-serif;background:var(--bg);color:var(--text)}body.dark{--bg:#111827;--card:#1f2937;--text:#ff3b3b;--muted:#ff7a7a;--line:#374151;--shadow:0 8px 25px #0008} body.dark header h1,body.dark aside button,body.dark .card h2,body.dark .card h3,body.dark label,body.dark .table th,body.dark .table td,body.dark .modalbox,body.dark .notice{color:#ff3b3b} body.dark input,body.dark select,body.dark textarea{color:#ff5a5a} body.dark .bio{color:#ff4040} body.dark .nonbio{color:#ff7043} body.dark .spouse{color:#ff4fd8}
-button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:9px;padding:9px 13px;background:#e8edf5;color:var(--text)}button.primary{background:var(--blue);color:#fff}button.danger{background:var(--danger);color:#fff}button.success{background:var(--green);color:#fff}button.small{padding:6px 9px;font-size:12px}button:disabled{opacity:.5;cursor:not-allowed}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Georgian",sans-serif;background:var(--bg);color:var(--text)}body.dark{--bg:#111827;--card:#1f2937;--text:#f3f4f6;--muted:#9ca3af;--line:#374151;--shadow:0 8px 25px #0008}
+button,input,select,textarea{font:inherit}
+.themeBtn{font-weight:700;min-width:82px}
+body.dark .themeBtn{color:#ff2b2b!important;border:1px solid #ff2b2b;background:#2a1515}
+body:not(.dark) .themeBtn{color:#b91c1c!important}button{cursor:pointer;border:0;border-radius:9px;padding:9px 13px;background:#e8edf5;color:var(--text)}button.primary{background:var(--blue);color:#fff}button.danger{background:var(--danger);color:#fff}button.success{background:var(--green);color:#fff}button.small{padding:6px 9px;font-size:12px}button:disabled{opacity:.5;cursor:not-allowed}
 header{height:62px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 16px;position:sticky;top:0;z-index:50}header h1{font-size:17px;margin-right:auto}.userBadge{font-size:12px;color:var(--muted);max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .layout{display:flex;min-height:calc(100vh - 62px)}aside{width:225px;background:var(--card);border-right:1px solid var(--line);padding:12px;position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto}aside button{display:block;width:100%;text-align:left;margin:4px 0;background:transparent}aside button:hover,aside button.active{background:#2563eb18;color:var(--blue)}main{flex:1;padding:18px;min-width:0}.page{display:none}.page.active{display:block}.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}.stat{font-size:28px;font-weight:700}.muted{color:var(--muted)}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.toolbar select,.toolbar input{min-width:180px}
 input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text)}textarea{min-height:90px;resize:vertical}label{display:block;font-size:13px;font-weight:700;margin:9px 0 5px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.full{grid-column:1/-1}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{border-bottom:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}.pill{display:inline-block;padding:3px 7px;border-radius:999px;font-size:11px;background:#eef2ff;margin:2px}.bio{color:var(--blue)}.nonbio{color:var(--orange)}.spouse{color:var(--purple)}.notice{padding:12px;border-radius:10px;background:#fff7ed;border:1px solid #fed7aa;margin-bottom:12px}.ok{background:#ecfdf5;border-color:#bbf7d0}.dangerText{color:var(--danger)}
@@ -23,10 +26,10 @@ input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border
 <div id="authNotice" class="notice">ჯერ შეიყვანე Supabase Project URL და Publishable key.</div>
 <div id="authTabs" class="tabs"><button id="tabLogin" class="active" onclick="authTab('login')">შესვლა</button><button id="tabRegister" onclick="authTab('register')">რეგისტრაცია</button><button onclick="openConfig()">⚙️ API</button></div>
 <div id="loginBox"><label>E-mail</label><input id="loginEmail" type="email"><label>პაროლი</label><input id="loginPassword" type="password"><div class="actions"><button class="primary" onclick="login()">🔐 შესვლა</button></div><button class="small" onclick="resetPassword()">პაროლის აღდგენა</button></div>
-<div id="registerBox" class="hidden"><div class="notice">ℹ️ რეგისტრაციის შემდეგ მომხმარებელი ავტომატურად არ მიიღება. Admin გადაწყვეტს მიღებას. თუ Supabase-ში <b>Confirm email</b> ჩართულია, რეგისტრაციას დამადასტურებელი წერილი სჭირდება.</div><label>სახელი</label><input id="regName"><label>E-mail</label><input id="regEmail" type="email"><label>პაროლი</label><input id="regPassword" type="password" minlength="6"><div class="actions"><button class="primary" onclick="register()">📝 რეგისტრაცია</button></div></div>
+<div id="registerBox" class="hidden"><label>სახელი</label><input id="regName"><label>E-mail</label><input id="regEmail" type="email"><label>პაროლი</label><input id="regPassword" type="password" minlength="6"><div class="actions"><button class="primary" onclick="register()">📝 რეგისტრაცია</button></div></div>
 <div id="recoveryBox" class="hidden"><h2>🔐 ახალი პაროლის დაყენება</h2><p class="muted">Recovery ბმული დადასტურებულია. ახლა შექმენი ახალი პაროლი.</p><label>ახალი პაროლი</label><input id="newPassword" type="password" minlength="6" autocomplete="new-password"><label>გაიმეორე ახალი პაროლი</label><input id="newPassword2" type="password" minlength="6" autocomplete="new-password"><div class="actions"><button class="primary" onclick="updatePassword()">🔑 Update password</button></div></div>
 </div></div>
-<header><h1>🌳 Genealogy Tree V9 — Supabase</h1><span id="userBadge" class="userBadge"></span><button onclick="toggleTheme()">🌓</button><button onclick="openConfig()">🔌 Supabase</button><button onclick="exportJSON()">Export</button><button onclick="importJSON()">Import</button><button class="primary" onclick="openPersonModal()">＋ ადამიანი</button><button onclick="logout()">🚪</button></header>
+<header><h1>🌳 Genealogy Tree V9 — Supabase</h1><span id="userBadge" class="userBadge"></span><button id="themeBtn" class="themeBtn" onclick="toggleTheme()">🌙 ღამე</button><button onclick="openConfig()">🔌 Supabase</button><button onclick="exportJSON()">Export</button><button onclick="importJSON()">Import</button><button class="primary" onclick="openPersonModal()">＋ ადამიანი</button><button onclick="logout()">🚪</button></header>
 <div class="layout"><aside id="nav">
 <button class="active" onclick="page('dashboard',this)">🏠 Dashboard</button><button onclick="page('tree',this)">🌳 გენეალოგიური ხე</button><button onclick="page('people',this)">👤 ადამიანები</button><button onclick="page('families',this)">👨‍👩‍👧 ოჯახები</button><button onclick="page('timeline',this)">📅 Timeline</button><button onclick="page('relations',this)">🔗 კავშირები</button><button onclick="page('requests',this)">🤝 კავშირის მოთხოვნები</button><button onclick="page('sources',this)">📚 Sources / Evidence</button><button onclick="page('messages',this)">✉️ შეტყობინებები</button><button onclick="page('admin',this)">⚙️ Admin</button><button onclick="page('audit',this)">📝 Audit</button>
 </aside><main>
@@ -167,14 +170,12 @@ async function register(){
     const {data,error}=await supa.auth.signUp({email,password,options:{data:{display_name:name}}});
     if(error)throw error;
     if(!data.user)throw new Error('Supabase-მ მომხმარებელი არ დააბრუნა.');
-    // Profile is created server-side by the Supabase handle_new_user trigger.
-    // Do NOT insert/upsert profiles from the browser during signup; RLS intentionally blocks
-    // creating a profile for another auth context and the trigger handles it securely.
-    if(data.session){session=data.session;await afterLogin()}else{showAuthError('✅ რეგისტრაცია დასრულდა. ანგარიში ახლა ელოდება Admin-ის დამტკიცებას.');authTab('login')}
+    if(data.user){const {error:pe}=await supa.from('profiles').upsert({id:data.user.id,display_name:name,email,role:'user',approved:false},{onConflict:'id'});if(pe)throw pe}
+    if(data.session){session=data.session;await afterLogin()}else{showAuthError('✅ რეგისტრაცია წარმატებით დასრულდა. '+(data.user.email_confirmed_at?'':'თუ Email Confirmation ჩართულია, ჯერ ელფოსტა დაადასტურე, შემდეგ შედი.'));authTab('login')}
   }catch(e){
     console.error('REGISTRATION ERROR:',e);
     const msg=e?.message||e?.error_description||String(e);
-    if((e?.status===429)||String(msg).toLowerCase().includes('rate limit')||String(msg).toLowerCase().includes('email rate')){showAuthError('⚠️ Supabase-ის Email Rate Limit ამოიწურა. ეს პროგრამის კოდის შეცდომა არ არის.\n\nამ V4 მოდელში ახალი მომხმარებელი ჯერ Admin-ის დამტკიცებას ელოდება. რეგისტრაციის გასამარტივებლად Supabase-ში გამორთე Email Confirmations (Authentication → Providers → Email → Confirm email = OFF), ან დააყენე Custom SMTP.\n\nშემდეგ რეგისტრაცია აღარ დაელოდება დამადასტურებელ წერილს.');}else{showAuthError('❌ რეგისტრაცია ვერ მოხერხდა\n\n'+msg+'\n\nკოდი: '+(e?.status||e?.code||'უცნობია'));}
+    showAuthError('❌ რეგისტრაცია ვერ მოხერხდა\n\n'+msg+'\n\nკოდი: '+(e?.status||e?.code||'უცნობია'));
   }finally{loading(false)}
 }
 function showAuthError(t){const x=$('authNotice');x.className='notice '+(String(t).startsWith('✅')?'ok':'');x.style.whiteSpace='pre-wrap';x.textContent=t}
@@ -193,24 +194,7 @@ async function afterLogin(){
   try{
     let {data:p,error}=await supa.from('profiles').select('*').eq('id',session.user.id).maybeSingle();
     if(error)throw error;
-    if(!p){
-      // No trigger is required for normal signup: after email confirmation/login,
-      // the authenticated user creates only their own pending profile. The
-      // profiles INSERT policy allows exactly this (id=auth.uid, role=user, approved=false).
-      const fallback={
-        id:session.user.id,
-        display_name:session.user.user_metadata?.display_name||session.user.email||'მომხმარებელი',
-        email:session.user.email||'',
-        role:'user',
-        approved:false
-      };
-      const {error:ce}=await supa.from('profiles').insert(fallback);
-      if(ce && ce.code!=='23505')throw ce;
-      const retry=await supa.from('profiles').select('*').eq('id',session.user.id).maybeSingle();
-      if(retry.error)throw retry.error;
-      p=retry.data;
-      if(!p)throw new Error('პროფილი ვერ შეიქმნა. გთხოვ, თავიდან შედი სისტემაში.');
-    }
+    if(!p){const fallback={id:session.user.id,display_name:session.user.user_metadata?.display_name||session.user.email||'მომხმარებელი',email:session.user.email||'',role:'user',approved:false};const {data:created,error:ce}=await supa.from('profiles').upsert(fallback,{onConflict:'id'}).select('*').single();if(ce)throw ce;p=created}
     currentProfile=p;
     if(currentProfile.approved===false&&currentProfile.role!=='admin'){
       hideAuth();document.querySelector('main').innerHTML='<div class="card"><h2>⏳ ანგარიში ელოდება Admin-ის დამტკიცებას</h2><p>რეგისტრაცია წარმატებით დასრულდა. სანამ Admin დაგამტკიცებს, ოჯახის მონაცემებზე წვდომა არ მოგეცემა.</p><button onclick="logout()">🚪 გამოსვლა</button></div>';return;
@@ -223,30 +207,84 @@ async function loadRemote(){if(!supa||!session||!currentProfile?.family_id)retur
 async function upsertRow(table,row){if(!supa||!session||!currentProfile?.family_id)throw new Error('ოჯახის ანგარიში არ არის დაკავშირებული');let payload=Object.assign({},row,{owner_id:session.user.id,family_id:currentProfile.family_id});let {error}=await supa.from(table).upsert(payload,{onConflict:'id'});if(error)throw error}
 async function deleteRow(table,id){let {error}=await supa.from(table).delete().eq('id',id).eq('family_id',currentProfile.family_id);if(error)throw error}
 async function savePersonRemote(p){await upsertRow('people',{id:p.id,data:p})}
-async function saveRelationRemote(r){await upsertRow('relationships',{id:r.id,from_person:r.from,to_person:r.to,type:r.type,status:r.status,note:r.note||'',source_ids:r.sourceIds||[],created_at:r.createdAt||now()})}
-async function saveMarriageRemote(m){
+async function saveRelationRemote(r){
   if(!supa||!session||!currentProfile?.family_id)throw new Error('ოჯახის ანგარიში არ არის დაკავშირებული');
-  const row={
-    id:m.id,
-    person1:m.person1,
-    person2:m.person2,
-    startdate:m.startDate||null,
-    enddate:m.endDate||null,
-    status:m.status||'married',
-    place:m.place||'',
-    note:m.note||'',
-    sourceids:m.sourceIds||[],
-    createdat:m.createdAt||now()
+  if(!r||!r.from||!r.to||!r.type)throw new Error('ურთიერთობის მონაცემები არასრულია');
+
+  const base={
+    from_person:r.from,
+    to_person:r.to,
+    type:r.type,
+    status:r.status||'confirmed',
+    note:r.note||'',
+    source_ids:r.sourceIds||[],
+    created_at:r.createdAt||now()
   };
-  await upsertRow('marriages',row);
+
+  // UNIQUE: family_id + from_person + to_person + type
+  // ჯერ ვამოწმებთ, ხომ არ არსებობს ზუსტად იგივე კავშირი.
+  const {data:existing,error:checkError}=await supa
+    .from('relationships')
+    .select('id,from_person,to_person,type,status,note,source_ids,created_at')
+    .eq('family_id',currentProfile.family_id)
+    .eq('from_person',r.from)
+    .eq('to_person',r.to)
+    .eq('type',r.type)
+    .maybeSingle();
+
+  if(checkError)throw checkError;
+
+  // თუ უკვე არსებობს, აღარ ვაკეთებთ INSERT-ს.
+  // არსებული ჩანაწერის ID-ს ვიყენებთ, რათა ლოკალური და Supabase მონაცემები დაემთხვეს.
+  if(existing){
+    r.id=existing.id;
+    r.status=existing.status||r.status||'confirmed';
+    r.note=existing.note||r.note||'';
+    r.sourceIds=existing.source_ids||r.sourceIds||[];
+    r.createdAt=existing.created_at||r.createdAt||now();
+    return existing;
+  }
+
+  // მხოლოდ არარსებული ურთიერთობა ემატება.
+  const {data,error}=await supa
+    .from('relationships')
+    .insert(Object.assign({},base,{id:r.id,owner_id:session.user.id,family_id:currentProfile.family_id}))
+    .select('id,from_person,to_person,type,status,note,source_ids,created_at')
+    .single();
+
+  if(error){
+    // თუ ორ ბრაუზერს/მოთხოვნას შორის ერთდროულად დაემატა იგივე კავშირი,
+    // UNIQUE შეცდომასაც მშვიდად ვამუშავებთ და უკვე არსებულ ჩანაწერს ვიღებთ.
+    if(String(error.message||'').includes('relationships_family_id_from_person_to_person_type_key')){
+      const {data:race,error:raceError}=await supa
+        .from('relationships')
+        .select('id,from_person,to_person,type,status,note,source_ids,created_at')
+        .eq('family_id',currentProfile.family_id)
+        .eq('from_person',r.from)
+        .eq('to_person',r.to)
+        .eq('type',r.type)
+        .maybeSingle();
+      if(raceError)throw raceError;
+      if(race){
+        r.id=race.id;
+        return race;
+      }
+    }
+    throw error;
+  }
+
+  r.id=data.id;
+  return data;
 }
+async function saveMarriageRemote(m){await upsertRow('marriages',Object.assign({},m,{created_at:m.createdAt||now()}))}
 async function saveFamilyRemote(f){await upsertRow('family_units',Object.assign({},f,{created_at:f.createdAt||now()}))}
 async function saveSourceRemote(s){await upsertRow('sources',Object.assign({},s,{created_at:s.createdAt||now()}))}
 async function saveAuditRemote(a){await upsertRow('audit_log',Object.assign({},a,{created_at:a.at||now()}))}
 async function logAction(action,detail=''){let a={id:uid('AUD'),at:now(),action,detail};db.audit.unshift(a);db.audit=db.audit.slice(0,500);try{await saveAuditRemote(a)}catch(e){console.warn(e)}}
 async function deleteRemoteRelation(id){await deleteRow('relationships',id)}
 async function deleteRemotePerson(id){await deleteRow('people',id)}
-function toggleTheme(){let t=document.body.classList.toggle('dark')?'dark':'light';localStorage.setItem(THEME_KEY,t)}
+function updateThemeButton(){let b=$('themeBtn');if(!b)return;b.textContent=document.body.classList.contains('dark')?'☀️ დღე':'🌙 ღამე'}
+function toggleTheme(){let t=document.body.classList.toggle('dark')?'dark':'light';localStorage.setItem(THEME_KEY,t);updateThemeButton()}
 function page(id,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(id)?.classList.add('active');document.querySelectorAll('#nav button').forEach(x=>x.classList.remove('active'));btn?.classList.add('active');if(id==='tree')renderTree();if(id==='people')renderPeople();if(id==='families')renderFamilies();if(id==='timeline')renderTimeline();if(id==='relations')renderRelations();if(id==='requests')renderRequests();if(id==='sources')renderSources();if(id==='messages')renderMessages();if(id==='admin')renderAdmin();if(id==='audit')renderAudit()}
 function getParents(id){return db.relations.filter(r=>['biological_father','biological_mother','step_father','step_mother'].includes(r.type)&&r.to===id).map(r=>r.from)}
 function getChildren(id){return db.relations.filter(r=>['biological_son','biological_daughter','adopted_son','adopted_daughter'].includes(r.type)&&r.from===id).map(r=>r.to)}
@@ -288,112 +326,9 @@ function openRequestModal(){let from=db.people.map(p=>`<option value="${p.id}">$
 function requestCanApprove(r){return currentProfile&&(currentProfile.role==='admin'||currentProfile.role==='family_admin'||r.to_person===currentProfile.person_id)}
 async function approveRequest(id,yes){let r=db.requests.find(x=>x.id===id);if(!r)return;if(!requestCanApprove(r))return toast('ამ მოთხოვნის დადასტურების უფლება არ გაქვს');try{let {error}=await supa.from('relationship_requests').update({status:yes?'approved':'rejected'}).eq('id',id).eq('family_id',currentProfile.family_id);if(error)throw error;if(yes){ensureRelation(r.from_person,r.type,r.to_person);let nr=db.relations.find(x=>x.from===r.from_person&&x.to===r.to_person&&x.type===r.type);await saveRelationRemote(nr)}r.status=yes?'approved':'rejected';await logAction(yes?'RELATION_REQUEST_APPROVED':'RELATION_REQUEST_REJECTED',id);refreshAll();toast(yes?'კავშირი დადასტურდა':'მოთხოვნა უარყოფილია')}catch(e){toast(e.message)}}
 function renderRequests(){let mine=db.requests;$('requestsList').innerHTML=mine.map(r=>{let can=requestCanApprove(r);return `<div class="card requestCard"><b>${esc(r.type)}</b><p>${esc(personName(getPerson(r.from_person)))} → ${esc(personName(getPerson(r.to_person)))}</p><p>სტატუსი: <span class="pill">${esc(r.status)}</span></p>${r.note?`<p>${esc(r.note)}</p>`:''}${r.status==='pending'&&can?`<button class="small success" onclick="approveRequest('${r.id}',true)">✓ დადასტურება</button> <button class="small danger" onclick="approveRequest('${r.id}',false)">✕ უარყოფა</button>`:''}</div>`}).join('')||'<p class="muted">მოთხოვნები არ არის.</p>'}
-async function openUserModal(){if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin-ს შეუძლია მომხმარებლების მართვა');$('modalTitle').textContent='👤 მომხმარებლის მიღება';$('modalBody').innerHTML=`<div class="card"><h3>როგორ მუშაობს</h3><p>მომხმარებელი თავად რეგისტრირდება Supabase Auth-ში. რეგისტრაციის შემდეგ ანგარიში ავტომატურად შედის <b>მოლოდინის რეჟიმში</b>. Admin წყვეტს მის მიღებას.</p><p>აქედან შენ — Admin — ირჩევ:</p><ul><li>✅ მიიღოს თუ არა მომხმარებელი</li><li>👤 რა როლი ჰქონდეს</li><li>🚫 უარი დარჩეს თუ არა</li></ul><div class="notice">პაროლი ამ პროგრამაში არ ინახება. პაროლებს მართავს Supabase Auth.</div><button class="primary" onclick="closeModal();page('admin',document.querySelectorAll('#nav button')[9]);renderAdmin()">Admin Panel</button></div>`;$('modal').classList.add('show')}
-async function renderAdmin(){
-  if(!supa||!session)return;
-  $('adminContent').innerHTML='<div class="card">⏳ მომხმარებლები იტვირთება...</div>';
-  if(currentProfile?.role!=='admin'){
-    $('adminContent').innerHTML='<div class="card">მომხმარებლების ადმინისტრირება მხოლოდ Super Admin-ს შეუძლია.</div>';
-    return;
-  }
-  let {data,error}=await supa.from('profiles').select('*').order('created_at',{ascending:true});
-  if(error){$('adminContent').innerHTML='<div class="card dangerText">'+esc(error.message)+'</div>';return}
-  let rows=(data||[]).map(u=>{
-    let pending=!u.approved&&u.role==='user';
-    let person=u.person_id?getPerson(u.person_id):null;
-    let personInfo=person?`<div class="muted">👤 ${esc(personName(person))} · ${esc(person.personalId||'')}</div>`:'<div class="muted">👤 პიროვნებასთან არ არის დაკავშირებული</div>';
-    let status=u.approved?'✅ მიღებულია':'⏳ მოლოდინში';
-    let actions=`<button class="small success" onclick="setUserApproval('${u.id}',true)">✓ მიღება</button> <button class="small danger" onclick="setUserApproval('${u.id}',false)">✕ უარყოფა</button> <button class="small primary" onclick="saveUser('${u.id}')">შენახვა</button>`;
-    if(u.approved && u.id!==session.user.id && u.role!=='admin'){
-      actions+=` <button class="small" onclick="markUserDeceased('${u.id}')">⚰️ გარდაცვალება</button> <button class="small danger" onclick="deleteUserAccount('${u.id}')">🗑️ ანგარიშის წაშლა</button>`;
-    }
-    return `<tr><td><b>${esc(u.display_name||'—')}</b>${personInfo}${pending?'<div class="pill">⏳ ელოდება მიღებას</div>':''}</td><td>${esc(u.email||'—')}</td><td><select id="role_${u.id}"><option value="user" ${u.role==='user'?'selected':''}>User</option><option value="family_admin" ${u.role==='family_admin'?'selected':''}>Family Admin</option><option value="admin" ${u.role==='admin'?'selected':''}>Admin</option></select></td><td><span class="pill">${status}</span></td><td><div class="actions">${actions}</div></td></tr>`;
-  }).join('');
-  $('adminContent').innerHTML=`<div class="card"><h2>👑 Admin — მომხმარებლების მართვა</h2><p class="muted">ანგარიშის გაუქმება და Person-ის წაშლა ერთმანეთისგან დამოუკიდებელია.</p><div class="notice"><b>⚰️ გარდაცვალება:</b> Person, Personal ID, ფოტო, ისტორია და ყველა ნათესაობა ინახება; მხოლოდ Auth ანგარიშის წვდომა უქმდება.<br><b>🗑️ ანგარიშის წაშლა:</b> იშლება მხოლოდ Auth ანგარიში; Person და გენეალოგიური მონაცემები რჩება.<br><b>📧 Email:</b> ანგარიშის გაუქმების შემდეგ იგივე E-mail მომავალში ხელახლა რეგისტრაციისთვის თავისუფალია.</div></div><div class="card tablewrap"><table class="table"><thead><tr><th>სახელი</th><th>E-mail</th><th>როლი</th><th>სტატუსი</th><th>მოქმედება</th></tr></thead><tbody>${rows||'<tr><td colspan="5">მომხმარებლები არ არის.</td></tr>'}</tbody></table></div>`;
-}
-
-async function callAccountFunction(body){
-  if(!supa)throw new Error('Supabase არ არის ჩართული');
-  if(!session)throw new Error('Supabase სესია არ არის აქტიური');
-  try{
-    const response=await fetch(`${SUPABASE_URL}/functions/v1/deactivate-deceased-user`,{method:'POST',headers:{'Authorization':`Bearer ${session.access_token}`,'apikey':SUPABASE_PUBLISHABLE_KEY,'Content-Type':'application/json'},body:JSON.stringify(body)});
-    const raw=await response.text(); let result={};
-    try{result=raw?JSON.parse(raw):{}}catch{throw new Error(`Edge Function-ის პასუხი JSON არ არის. HTTP ${response.status}\n${raw}`)}
-    if(!response.ok||result.ok!==true){const step=result.step?`\nნაბიჯი: ${result.step}`:'';const details=result.details?`\nდეტალი: ${result.details}`:'';throw new Error(`${result.error||'ოპერაცია ვერ შესრულდა'}${step}${details}`)}
-    return result;
-  }catch(e){if(e instanceof TypeError)throw new Error('Edge Function-მდე დაკავშირება ვერ მოხერხდა. შეამოწმე Function-ის Deployment.');throw e;}
-}
-
-async function deleteUserAccount(id,fromReject=false){
-  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin-ს შეუძლია ანგარიშის წაშლა');
-  if(!id||id===session?.user?.id)return toast('საკუთარი Admin ანგარიშის წაშლა დაუშვებელია');
-  const row=document.querySelector(`button[onclick*="deleteUserAccount('${id}'"]`);
-  const ok=confirm(
-    (fromReject?'❌ ამ რეგისტრაციის უარყოფა?':'🗑️ ნამდვილად გსურთ ანგარიშის წაშლა?')+
-    '\n\nმნიშვნელოვანი:\n'+
-    '• მხოლოდ Auth ანგარიში წაიშლება.\n'+
-    '• Person არ წაიშლება.\n'+
-    '• Personal ID, ფოტო, ისტორია და ნათესაობები დარჩება.\n'+
-    '• Email მომავალში ხელახლა რეგისტრაციისთვის თავისუფალი იქნება.'
-  );
-  if(!ok)return;
-  try{
-    if(row)row.disabled=true;
-    const data=await callAccountFunction({mode:'delete_user',target_user_id:id});
-    await logAction(fromReject?'USER_REGISTRATION_REJECTED':'USER_ACCOUNT_DELETED',id);
-    toast(fromReject?'❌ რეგისტრაცია უარყოფილია; Email თავისუფალია':'🗑️ ანგარიში წაიშალა; Person და გენეალოგია შენარჩუნებულია');
-    await renderAdmin();
-  }catch(e){
-    toast('ანგარიშის წაშლა ვერ მოხერხდა: '+e.message);
-    if(row)row.disabled=false;
-  }
-}
-
-async function markUserDeceased(id){
-  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin-ს შეუძლია');
-  if(!id||id===session?.user?.id)return toast('საკუთარი Admin ანგარიშის გარდაცვლილად მონიშვნა დაუშვებელია');
-  const {data:profile,error}=await supa.from('profiles').select('id,email,display_name,person_id').eq('id',id).single();
-  if(error||!profile) return toast('მომხმარებლის პროფილი ვერ მოიძებნა');
-  if(!profile.person_id)return toast('ამ მომხმარებელს ჯერ Person არ აქვს დაკავშირებული');
-  const deathDate=prompt('შეიყვანე გარდაცვალების თარიღი (YYYY-MM-DD):','');
-  if(!deathDate)return;
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(deathDate))return toast('თარიღი უნდა იყოს YYYY-MM-DD ფორმატში');
-  if(!confirm('⚰️ ნამდვილად გსურთ მომხმარებლის გარდაცვლილად მონიშვნა?\n\nPerson, Personal ID, ფოტო, ისტორია და ნათესაობები შენარჩუნდება.\nგაუქმდება მხოლოდ Auth ანგარიში.'))return;
-  try{
-    await callAccountFunction({mode:'deceased',target_user_id:id,person_id:profile.person_id,death_date:deathDate});
-    await logAction('USER_MARKED_DECEASED',profile.person_id);
-    toast('⚰️ გარდაცვლილად მოინიშნა; Person და გენეალოგია შენარჩუნებულია');
-    await renderAdmin();
-  }catch(e){toast('გარდაცვლილად მონიშვნა ვერ მოხერხდა: '+e.message)}
-}
-
-async function setUserApproval(id,approved){
-  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');
-  let role=$('role_'+id)?.value||'user';
-  try{
-    if(!approved){
-      await deleteUserAccount(id,true);
-      return;
-    }
-    let {error}=await supa.from('profiles').update({role,approved:true}).eq('id',id);
-    if(error)throw error;
-    await logAction('USER_APPROVED',id);
-    toast('✅ მომხმარებელი მიღებულია');
-    await renderAdmin();
-  }catch(e){toast('მომხმარებლის სტატუსის შეცვლა ვერ მოხერხდა: '+e.message)}
-}
-
-async function saveUser(id){
-  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');
-  let role=$('role_'+id)?.value||'user';
-  try{
-    let {error}=await supa.from('profiles').update({role}).eq('id',id);
-    if(error)throw error;
-    await logAction('USER_UPDATED',id);
-    toast('მომხმარებელი განახლდა');
-    await renderAdmin();
-  }catch(e){toast(e.message)}
-}
+async function openUserModal(){if(currentProfile?.role!=='admin'&&currentProfile?.role!=='family_admin')return toast('Admin უფლება საჭიროა');$('modalTitle').textContent='მომხმარებლის დამატება';$('modalBody').innerHTML=`<p>მომხმარებელი თავად უნდა დარეგისტრირდეს Auth-ით. Admin აქედან მართავს დამტკიცებასა და როლს.</p><div class="notice">პაროლი ამ პროგრამაში არ ინახება. პაროლებს მართავს Supabase Auth.</div><button onclick="page('admin',document.querySelectorAll('#nav button')[9]);closeModal()">Admin Panel</button>`;$('modal').classList.add('show')}
+async function renderAdmin(){if(!supa||!session)return;$('adminContent').innerHTML='<div class="card">⏳ მომხმარებლები იტვირთება...</div>';let {data,error}=await supa.from('profiles').select('*').order('created_at',{ascending:true});if(error){$('adminContent').innerHTML='<div class="card dangerText">'+esc(error.message)+'</div>';return}if(currentProfile?.role!=='admin'){$('adminContent').innerHTML='<div class="card">მომხმარებლების ადმინისტრირება მხოლოდ Super Admin-ს შეუძლია.</div>';return}$('adminContent').innerHTML=`<div class="card tablewrap"><table class="table"><thead><tr><th>სახელი</th><th>E-mail</th><th>როლი</th><th>Approved</th><th></th></tr></thead><tbody>${(data||[]).map(u=>`<tr><td>${esc(u.display_name||'—')}</td><td>${esc(u.email||'—')}</td><td><select id="role_${u.id}"><option value="user" ${u.role==='user'?'selected':''}>user</option><option value="family_admin" ${u.role==='family_admin'?'selected':''}>family_admin</option><option value="admin" ${u.role==='admin'?'selected':''}>admin</option></select></td><td><input type="checkbox" id="app_${u.id}" ${u.approved?'checked':''}></td><td><button class="small primary" onclick="saveUser('${u.id}')">შენახვა</button></td></tr>`).join('')}</tbody></table></div>`}
+async function saveUser(id){if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');let role=$('role_'+id).value,approved=$('app_'+id).checked;try{let {error}=await supa.from('profiles').update({role,approved}).eq('id',id);if(error)throw error;await logAction('USER_UPDATED',id);toast('მომხმარებელი განახლდა');renderAdmin()}catch(e){toast(e.message)}}
 function renderAudit(){$('auditTable').innerHTML=db.audit.map(a=>`<tr><td>${fmt(a.at||a.created_at)}</td><td>${esc(a.action)}</td><td>${esc(a.detail||'')}</td></tr>`).join('')||'<tr><td colspan="3">Audit ცარიელია.</td></tr>'}
 function renderStats(){$('stats').innerHTML=[['👤 ადამიანები',db.people.length],['🔗 კავშირები',db.relations.length],['👨‍👩‍👧 ოჯახები',db.marriages.length],['📚 Sources',db.sources.length],['✉️ შეტყობინებები',db.messages.length],['🤝 მოთხოვნები',db.requests.length]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="stat">${x[1]}</div></div>`).join('')}
 function refreshAll(){renderStats();renderPeople();renderFamilies();renderTimeline();renderRelations();renderRequests();renderSources();renderMessages();renderAdmin();renderAudit();fillTreeCenter();if($('tree').classList.contains('active'))renderTree();$('connectionNotice').innerHTML=supa&&session?'<div class="notice ok">☁️ Supabase დაკავშირებულია. მონაცემები მოდის PostgreSQL-დან.</div>':'<div class="notice">🔌 Supabase ჯერ არ არის დაკავშირებული.</div>'}
@@ -404,5 +339,5 @@ $('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
 function downloadSVG(){let svg=$('treeSvg').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'}));a.download='Genealogy_Tree_V9.svg';a.click()}
 function downloadPNG(){let svg=$('treeSvg').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');let xml=new XMLSerializer().serializeToString(svg),img=new Image();img.onload=()=>{let c=document.createElement('canvas');c.width=treeState.width;c.height=treeState.height;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0);let a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='Genealogy_Tree_V9.png';a.click()};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml)}
 function printTree(){let clone=$('treeViewport').cloneNode(true),w=window.open('','_blank');w.document.write(`<html><head><title>Genealogy Tree V9</title><style>body{margin:0;font-family:Arial}#treeViewport{height:auto;overflow:visible;border:0;position:relative}.treeCanvas{position:relative!important;transform:none!important;left:0!important;top:0!important}.treeSvg{position:absolute}.node{position:absolute}</style></head><body>${clone.outerHTML}</body></html>`);w.document.close();setTimeout(()=>w.print(),500)}
-(async function boot(){let t=localStorage.getItem(THEME_KEY)||'light';document.body.classList.toggle('dark',t==='dark');if(!localStorage.getItem(SUPA_CFG))saveConfig({url:SUPABASE_URL,key:SUPABASE_PUBLISHABLE_KEY});await initSupabase()})();
+(async function boot(){let t=localStorage.getItem(THEME_KEY)||'light';document.body.classList.toggle('dark',t==='dark');updateThemeButton();if(!localStorage.getItem(SUPA_CFG))saveConfig({url:SUPABASE_URL,key:SUPABASE_PUBLISHABLE_KEY});await initSupabase()})();
 </script></body></html>
