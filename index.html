@@ -224,7 +224,22 @@ async function upsertRow(table,row){if(!supa||!session||!currentProfile?.family_
 async function deleteRow(table,id){let {error}=await supa.from(table).delete().eq('id',id).eq('family_id',currentProfile.family_id);if(error)throw error}
 async function savePersonRemote(p){await upsertRow('people',{id:p.id,data:p})}
 async function saveRelationRemote(r){await upsertRow('relationships',{id:r.id,from_person:r.from,to_person:r.to,type:r.type,status:r.status,note:r.note||'',source_ids:r.sourceIds||[],created_at:r.createdAt||now()})}
-async function saveMarriageRemote(m){await upsertRow('marriages',Object.assign({},m,{created_at:m.createdAt||now()}))}
+async function saveMarriageRemote(m){
+  if(!supa||!session||!currentProfile?.family_id)throw new Error('ოჯახის ანგარიში არ არის დაკავშირებული');
+  const row={
+    id:m.id,
+    person1:m.person1,
+    person2:m.person2,
+    startdate:m.startDate||null,
+    enddate:m.endDate||null,
+    status:m.status||'married',
+    place:m.place||'',
+    note:m.note||'',
+    sourceids:m.sourceIds||[],
+    createdat:m.createdAt||now()
+  };
+  await upsertRow('marriages',row);
+}
 async function saveFamilyRemote(f){await upsertRow('family_units',Object.assign({},f,{created_at:f.createdAt||now()}))}
 async function saveSourceRemote(s){await upsertRow('sources',Object.assign({},s,{created_at:s.createdAt||now()}))}
 async function saveAuditRemote(a){await upsertRow('audit_log',Object.assign({},a,{created_at:a.at||now()}))}
