@@ -6,7 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--bg:#f4f6f9;--card:#fff;--text:#172033;--muted:#6b7280;--line:#d9dee8;--blue:#2563eb;--orange:#ea580c;--purple:#7c3aed;--green:#15803d;--danger:#dc2626;--shadow:0 8px 25px #00000012}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Georgian",sans-serif;background:var(--bg);color:var(--text)}body.dark{--bg:#111827;--card:#1f2937;--text:#f3f4f6;--muted:#9ca3af;--line:#374151;--shadow:0 8px 25px #0008}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Georgian",sans-serif;background:var(--bg);color:var(--text)}body.dark{--bg:#111827;--card:#1f2937;--text:#ff2b2b;--muted:#ff2b2b;--line:#6b1f1f;--shadow:0 8px 25px #0008}body.dark,body.dark *{color:#ff2b2b!important}body.dark input,body.dark select,body.dark textarea{color:#ff2b2b!important;border-color:#6b1f1f}body.dark input::placeholder,body.dark textarea::placeholder{color:#ff2b2b!important;opacity:.75}body.dark button{color:#ff2b2b!important}body.dark button.primary,body.dark button.danger,body.dark button.success{color:#ff2b2b!important}body.dark a{color:#ff2b2b!important}body.dark .pill{color:#ff2b2b!important;background:#3a1717}body.dark .notice{color:#ff2b2b!important}body.dark .loading{color:#ff2b2b!important}body.dark svg text{fill:#ff2b2b!important}
 button,input,select,textarea{font:inherit}
 .themeBtn{font-weight:700;min-width:82px}
 body.dark .themeBtn{color:#ff2b2b!important;border:1px solid #ff2b2b;background:#2a1515}
@@ -292,7 +292,148 @@ function getSiblings(id){let s=new Set();getParents(id).forEach(p=>getChildren(p
 function getSpouses(id){let s=new Set();db.marriages.forEach(m=>{if(m.person1===id)s.add(m.person2);if(m.person2===id)s.add(m.person1)});db.relations.filter(r=>['spouse','partner'].includes(r.type)).forEach(r=>{if(r.from===id)s.add(r.to);if(r.to===id)s.add(r.from)});return [...s]}
 function rebuildDerivedPersonFields(){db.people.forEach(p=>{p.biologicalFather='';p.biologicalMother='';p.stepFather='';p.stepMother='';p.biologicalChildren=[];p.adoptedChildren=[]});db.relations.forEach(r=>{let a=getPerson(r.from),b=getPerson(r.to);if(!a||!b)return;if(r.type==='biological_father')b.biologicalFather=a.id;if(r.type==='biological_mother')b.biologicalMother=a.id;if(r.type==='step_father')b.stepFather=a.id;if(r.type==='step_mother')b.stepMother=a.id;if(['biological_son','biological_daughter'].includes(r.type))a.biologicalChildren.push(b.id);if(['adopted_son','adopted_daughter'].includes(r.type))a.adoptedChildren.push(b.id)});syncFamilyChildren()}
 function syncFamilyChildren(){db.familyUnits.forEach(f=>f.childIds=[]);db.marriages.forEach(m=>{let f=db.familyUnits.find(x=>x.marriageId===m.id);if(!f){f={id:uid('FAM'),marriageId:m.id,person1:m.person1,person2:m.person2,childIds:[]};db.familyUnits.push(f)}let kids=new Set();db.relations.filter(r=>['biological_son','biological_daughter','adopted_son','adopted_daughter'].includes(r.type)).forEach(r=>{if(r.from===m.person1||r.from===m.person2)kids.add(r.to)});f.childIds=[...kids]})}
-function relationLabel(id,center){if(id===center)return 'ცენტრალური პირი';let p=getPerson(id);let direct=db.relations.filter(r=>r.from===center&&r.to===id);let rev=db.relations.filter(r=>r.from===id&&r.to===center);let map={biological_father:'მამა',biological_mother:'დედა',step_father:'მამინაცვალი',step_mother:'დედინაცვალი',biological_son:'ვაჟი',biological_daughter:'ქალიშვილი',adopted_son:'ნაშვილები ვაჟი',adopted_daughter:'ნაშვილები ქალიშვილი',spouse:'მეუღლე',partner:'პარტნიორი',other_family:'ნათესავი'};if(direct.length)return map[direct[0].type]||'ნათესავი';if(rev.length)return ['biological_son','biological_daughter','adopted_son','adopted_daughter'].includes(rev[0].type)?'შვილი':(map[rev[0].type]||'ნათესავი');let pars=getParents(center);if(pars.includes(id))return p?.gender==='female'?'დედა':'მამა';let cps=getChildren(center);if(cps.includes(id))return p?.gender==='female'?'ქალიშვილი':'ვაჟი';if(getSiblings(center).includes(id))return p?.gender==='female'?'და':'ძმა';let gp=pars.flatMap(x=>getParents(x));if(gp.includes(id))return p?.gender==='female'?'ბებია':'პაპა';let gc=cps.flatMap(x=>getChildren(x));if(gc.includes(id))return 'შვილიშვილი';let uncles=[];pars.forEach(x=>uncles.push(...getSiblings(x)));if(uncles.includes(id))return p?.gender==='female'?'დეიდა':'ბიძა';return 'ნათესავი'}
+function genderRole(id,female='ქალი',male='კაცი',unknown='პირი'){
+  const p=getPerson(id);
+  if(p?.gender==='female') return female;
+  if(p?.gender==='male') return male;
+  return unknown;
+}
+function kinshipLabel(id,center){
+  if(id===center)return 'ცენტრალური პირი';
+  const target=getPerson(id), me=getPerson(center);
+  if(!target||!me)return 'ნათესავი';
+
+  // მეუღლე
+  const spouses=getSpouses(center);
+  if(spouses.includes(id)) return target.gender==='female'?'ცოლი':target.gender==='male'?'ქმარი':'მეუღლე';
+
+  // პირდაპირი მშობლები / შვილები
+  const parents=getParents(center);
+  if(parents.includes(id)) return target.gender==='female'?'დედა':target.gender==='male'?'მამა':'მშობელი';
+  const children=getChildren(center);
+  if(children.includes(id)) return target.gender==='female'?'ქალიშვილი':target.gender==='male'?'ვაჟი':'შვილი';
+
+  // და-ძმა
+  const siblings=getSiblings(center);
+  if(siblings.includes(id)) return target.gender==='female'?'და':target.gender==='male'?'ძმა':'და-ძმა';
+
+  // ბებია/ბაბუა
+  const grandparents=[...new Set(parents.flatMap(x=>getParents(x)))];
+  if(grandparents.includes(id)) return target.gender==='female'?'ბებია':target.gender==='male'?'ბაბუა':'ბებია/ბაბუა';
+
+  // შვილიშვილები
+  const grandchildren=[...new Set(children.flatMap(x=>getChildren(x)))];
+  if(grandchildren.includes(id)) return 'შვილიშვილი';
+
+  // მშობლის და-ძმა
+  const unclesAunts=[...new Set(parents.flatMap(x=>getSiblings(x)))];
+  if(unclesAunts.includes(id)) return target.gender==='female'?'დეიდა':'ბიძა';
+
+  // ბიძა/დეიდის შვილები — ბიძაშვილი/დეიდაშვილი
+  const cousins=[...new Set(unclesAunts.flatMap(x=>getChildren(x)))];
+  if(cousins.includes(id)){
+    const parentOfTarget=getParents(id);
+    const sharedParent=parentOfTarget.some(x=>parents.includes(x));
+    if(sharedParent) return 'ბიძაშვილი/დეიდაშვილი';
+    return 'ბიძაშვილი/დეიდაშვილი';
+  }
+
+  // მეუღლის მშობლები — ქართული სპეციფიკური ტერმინები
+  for(const sp of spouses){
+    const spPerson=getPerson(sp);
+    const spouseParents=getParents(sp);
+    if(spouseParents.includes(id)){
+      if(me.gender==='female' && spPerson?.gender==='male'){
+        return target.gender==='female'?'დედამთილი':target.gender==='male'?'მამამთილი':'მეუღლის მშობელი';
+      }
+      if(me.gender==='male' && spPerson?.gender==='female'){
+        return target.gender==='female'?'სიდედრი':target.gender==='male'?'სიმამრი':'მეუღლის მშობელი';
+      }
+      return target.gender==='female'?'მეუღლის დედა':'მეუღლის მამა';
+    }
+
+    // მეუღლის ბებია/ბაბუა
+    const spouseGrandparents=spouseParents.flatMap(x=>getParents(x));
+    if(spouseGrandparents.includes(id)){
+      return target.gender==='female'?'მეუღლის ბებია':'მეუღლის ბაბუა';
+    }
+
+    // მეუღლის და-ძმა — ქართული გავრცელებული ტერმინები
+    const spouseSiblings=getSiblings(sp);
+    if(spouseSiblings.includes(id)){
+      if(spPerson?.gender==='male'){
+        if(me.gender==='female') return target.gender==='female'?'მული':'მაზლი';
+        return target.gender==='female'?'ცოლისდა':'ცოლისძმა';
+      }
+      if(spPerson?.gender==='female'){
+        if(me.gender==='male') return target.gender==='female'?'ცოლისდა':'ცოლისძმა';
+        return target.gender==='female'?'მული':'მაზლი';
+      }
+    }
+
+    // მეუღლის და-ძმის შვილები
+    const spouseNiecesNephews=spouseSiblings.flatMap(x=>getChildren(x));
+    if(spouseNiecesNephews.includes(id)) return 'მეუღლის დის/ძმის შვილი';
+  }
+
+  // და/ძმის შვილები
+  const siblingChildren=[...new Set(siblings.flatMap(x=>getChildren(x)))];
+  if(siblingChildren.includes(id)){
+    const siblingParents=getParents(id);
+    const sib=siblings.find(x=>siblingParents.includes(x));
+    if(getPerson(sib)?.gender==='female') return target.gender==='female'?'დისშვილი':'დისშვილი';
+    return target.gender==='female'?'ძმისშვილი':'ძმისშვილი';
+  }
+
+  // ბიძა/დეიდის მეუღლე
+  for(const ua of unclesAunts){
+    if(getSpouses(ua).includes(id)) return target.gender==='female'?'ბიძის/დეიდის მეუღლე':'ბიძის/დეიდის მეუღლე';
+  }
+
+  // უფრო შორეული წინაპრები/შთამომავლები
+  let frontier=[...parents],seen=new Set(frontier);
+  for(let level=2;level<=5 && frontier.length;level++){
+    const next=[];
+    for(const x of frontier){
+      for(const pp of getParents(x)) if(!seen.has(pp)){seen.add(pp);next.push(pp)}
+    }
+    if(next.includes(id)) return target.gender==='female'?'წინაპარი ქალი':'წინაპარი კაცი';
+    frontier=next;
+  }
+  frontier=[...children];seen=new Set(frontier);
+  for(let level=2;level<=5 && frontier.length;level++){
+    const next=[];
+    for(const x of frontier){
+      for(const cc of getChildren(x)) if(!seen.has(cc)){seen.add(cc);next.push(cc)}
+    }
+    if(next.includes(id)) return 'შთამომავალი';
+    frontier=next;
+  }
+
+  return 'ნათესავი';
+}
+function relationLabel(id,center){
+  if(id===center)return 'ცენტრალური პირი';
+  const direct=db.relations.filter(r=>r.from===center&&r.to===id);
+  const reverse=db.relations.filter(r=>r.from===id&&r.to===center);
+  const map={
+    biological_father:'მამა', biological_mother:'დედა',
+    step_father:'მამინაცვალი', step_mother:'დედინაცვალი',
+    biological_son:'ვაჟი', biological_daughter:'ქალიშვილი',
+    adopted_son:'ნაშვილები ვაჟი', adopted_daughter:'ნაშვილები ქალიშვილი',
+    spouse:'მეუღლე', partner:'პარტნიორი', other_family:'ნათესავი'
+  };
+  // პირდაპირი ტიპი მხოლოდ მაშინ გამოიყენება, როცა უფრო ზუსტი ქართული ნათესაობა ვერ განისაზღვრება.
+  const precise=kinshipLabel(id,center);
+  if(precise!=='ნათესავი')return precise;
+  if(direct.length)return map[direct[0].type]||'ნათესავი';
+  if(reverse.length){
+    const t=reverse[0].type;
+    if(['biological_son','biological_daughter','adopted_son','adopted_daughter'].includes(t))return 'შვილი';
+    return map[t]||'ნათესავი';
+  }
+  return 'ნათესავი';
+}
 function familyDepth(center){let dist=new Map([[center,0]]),q=[center];while(q.length){let x=q.shift(),d=dist.get(x);let nb=[...getParents(x),...getChildren(x),...getSiblings(x),...getSpouses(x)];nb.forEach(n=>{if(!dist.has(n)){dist.set(n,d+1);q.push(n)}})}return dist}
 function fillTreeCenter(){let s=$('treeCenter'),old=s.value;s.innerHTML=db.people.map(p=>`<option value="${p.id}">${genderIcon(p.gender)} ${esc(personName(p))} — ${esc(p.personalId)}</option>`).join('');if(db.people.some(p=>p.id===old))s.value=old}
 function renderTree(){fillTreeCenter();let center=$('treeCenter').value||db.people[0]?.id;if(!center)return;let max=$('treeDepth').value==='all'?99:+$('treeDepth').value,filter=$('treeFilter').value;let dist=familyDepth(center),allowed=new Set([...dist].filter(([id,d])=>d<=max).map(([id])=>id));let nodes=[...allowed].map(id=>({id}));let allowedRel=r=>allowed.has(r.from)&&allowed.has(r.to)&&(filter==='all'||(filter==='bio'&&r.type.startsWith('biological_'))||(filter==='bioNon'&&(r.type.startsWith('biological_')||r.type.startsWith('adopted_')||r.type.startsWith('step_')||r.type==='spouse'||r.type==='partner')));let edges=db.relations.filter(allowedRel);db.marriages.forEach(m=>{if(allowed.has(m.person1)&&allowed.has(m.person2)&&filter!=='bio')edges.push({from:m.person1,to:m.person2,type:'spouse',marriage:true,id:m.id})});let gen=new Map([[center,0]]),queue=[center];while(queue.length){let x=queue.shift(),g=gen.get(x);getParents(x).forEach(p=>{if(allowed.has(p)&&!gen.has(p)){gen.set(p,g-1);queue.push(p)}});getChildren(x).forEach(c=>{if(allowed.has(c)&&!gen.has(c)){gen.set(c,g+1);queue.push(c)}})}nodes.forEach(n=>{if(!gen.has(n.id))gen.set(n.id,0)});let rows=new Map();nodes.forEach(n=>{let g=gen.get(n.id);if(!rows.has(g))rows.set(g,[]);rows.get(g).push(n.id)});let sorted=[...rows.keys()].sort((a,b)=>a-b),rowGap=240,nodeW=190,gap=35,width=2600;let positions=new Map();let minGen=Math.min(...sorted);sorted.forEach((g,ri)=>{let arr=rows.get(g);arr.sort((a,b)=>{if(a===center)return -1;if(b===center)return 1;return personName(getPerson(a)).localeCompare(personName(getPerson(b))) });let total=arr.length*nodeW+(arr.length-1)*gap;let start=Math.max(80,(width-total)/2);arr.forEach((id,i)=>positions.set(id,{x:start+i*(nodeW+gap),y:80+(g-minGen)*rowGap}))});let height=Math.max(700,(Math.max(...sorted)-minGen+1)*rowGap+220);$('treeCanvas').style.width=width+'px';$('treeCanvas').style.height=height+'px';$('treeSvg').setAttribute('width',width);$('treeSvg').setAttribute('height',height);$('treeSvg').innerHTML='';$('treeNodes').innerHTML='';nodes.forEach(n=>{let p=getPerson(n.id),pos=positions.get(n.id),d=document.createElement('div');d.className='node'+(n.id===center?' center':'');d.style.left=pos.x+'px';d.style.top=pos.y+'px';let pic=p.photo&&vis(p,'photo')?`<img src="${p.photo}" alt="">`:`<div style="height:62px;display:flex;align-items:center;justify-content:center;font-size:42px">${genderIcon(p.gender)}</div>`;d.innerHTML=pic+`<div class="role">${esc(relationLabel(n.id,center))}</div><div class="name">${genderIcon(p.gender)} ${esc(personName(p))}</div><div class="meta">${ageText(p)}<br>დაბ.: ${fmt(p.birthDate)}${p.deathDate?'<br>გარდ.: '+fmt(p.deathDate):''}<br>🆔 ${esc(p.personalId)}</div>`;d.onclick=()=>openProfile(p.id);$('treeNodes').appendChild(d)});edges.forEach(e=>{let a=positions.get(e.from),b=positions.get(e.to);if(a&&b)drawEdge(a,b,e.type,e.marriage)});treeState={nodes,edges,width,height,positions};setupPan()}
