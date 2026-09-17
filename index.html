@@ -16,8 +16,16 @@ header{height:62px;background:var(--card);border-bottom:1px solid var(--line);di
 input,select,textarea{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text)}textarea{min-height:90px;resize:vertical}label{display:block;font-size:13px;font-weight:700;margin:9px 0 5px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.full{grid-column:1/-1}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{border-bottom:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}.pill{display:inline-block;padding:3px 7px;border-radius:999px;font-size:11px;background:#eef2ff;margin:2px}.bio{color:var(--blue)}.nonbio{color:var(--orange)}.spouse{color:var(--purple)}.notice{padding:12px;border-radius:10px;background:#fff7ed;border:1px solid #fed7aa;margin-bottom:12px}.ok{background:#ecfdf5;border-color:#bbf7d0}.dangerText{color:var(--danger)}
 .modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:15px;z-index:100}.modal.show{display:flex}.modalbox{background:var(--card);border-radius:16px;max-width:960px;width:100%;max-height:92vh;overflow:auto;padding:18px}.modalhead{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px}.modalhead h2{margin:0 auto 0 0}.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}.photoPreview{width:90px;height:90px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
 #treeViewport{height:calc(100vh - 190px);min-height:600px;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--card);position:relative;cursor:grab}.treeCanvas{position:absolute;left:0;top:0;transform-origin:0 0}.treeSvg{position:absolute;left:0;top:0;overflow:visible}.treeNodes{position:absolute;left:0;top:0}.node{position:absolute;width:190px;min-height:165px;background:var(--card);border:2px solid #94a3b8;border-radius:13px;padding:8px;text-align:center;box-shadow:var(--shadow);user-select:none}.node.center{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb20,var(--shadow)}.node img{width:55px;height:55px;border-radius:50%;object-fit:cover;border:1px solid var(--line);display:block;margin:2px auto 5px}.node .role{font-size:11px;font-weight:700;margin-bottom:3px}.node .name{font-weight:700;font-size:14px}.node .meta{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.35}.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;margin:8px 0}.legend span{display:flex;align-items:center;gap:5px}.legend i{display:inline-block;width:35px;border-top:3px solid}.legend .b{border-color:var(--blue)}.legend .o{border-color:var(--orange);border-top-style:dashed}.legend .p{border-color:var(--purple);border-top-style:dashed}.legend .g{border-color:#6b7280;border-top-style:dotted}
-.privacyBox{border:1px solid var(--line);padding:14px;border-radius:14px;background:rgba(127,127,127,.06)}.privacyGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.checkline{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;cursor:pointer}.checkline input{width:18px;height:18px}.auth{position:fixed;inset:0;background:var(--bg);display:none;align-items:center;justify-content:center;padding:20px;z-index:500}.auth.show{display:flex}.authBox{width:min(470px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow)}.authBox h1{margin-top:0}.tabs{display:flex;gap:5px;margin-bottom:15px}.tabs button{flex:1}.tabs button.active{background:var(--blue);color:#fff}.hidden{display:none!important}.loading{position:fixed;inset:0;background:#0005;z-index:600;display:none;align-items:center;justify-content:center;color:#fff;font-size:20px}.loading.show{display:flex}.requestCard{border-left:4px solid var(--blue)}
-@media(max-width:850px){aside{width:62px;padding:7px}aside button{font-size:0;text-align:center}aside button:first-letter{font-size:18px}.formgrid{grid-template-columns:1fr}header h1{font-size:14px}.node{width:175px}.privacyGrid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.privacyGrid{grid-template-columns:1fr}.userBadge{display:none}}
+.privacyBox{border:1px solid var(--line);padding:14px;border-radius:14px;background:rgba(127,127,127,.06)}.privacyGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.checkline{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;cursor:pointer}.checkline input{width:18px;height:18px}.auth{position:fixed;inset:0;background:var(--bg);display:none;align-items:center;justify-content:center;padding:20px;z-index:500}.auth.show{display:flex}.authBox{width:min(470px,100%);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:25px;box-shadow:var(--shadow)}.authBox h1{margin-top:0}.tabs{display:flex;gap:5px;margin-bottom:15px}.tabs button{flex:1}.tabs button.active{background:var(--blue);color:#fff}.hidden{display:none!important}.loading{position:fixed;inset:0;background:#0005;z-index:600;display:none;align-items:center;justify-content:center;color:#fff;font-size:20px}.loading.show{display:flex} .requestCard{border-left:4px solid var(--blue)}
+.adminActions{display:flex;gap:5px;flex-wrap:wrap}.adminUserName{font-weight:700}.statusActive{color:#15803d;font-weight:700}.statusBlocked{color:#b45309;font-weight:700}.statusDead{color:#7c2d12;font-weight:700}.statusRejected{color:#dc2626;font-weight:700}.adminHint{font-size:12px;color:var(--muted);margin-top:8px}.personLink{font-size:12px;color:var(--blue);cursor:pointer}.dangerOutline{background:#fff;border:1px solid var(--danger);color:var(--danger)}
+@media(max-width:850px){aside{width:62px;padding:7px}aside button{font-size:0;text-align:center;padding:10px 5px}aside button:first-letter{font-size:18px}.formgrid{grid-template-columns:1fr}header h1{font-size:14px}.node{width:175px}.privacyGrid{grid-template-columns:1fr 1fr}main{padding:12px}.card{padding:12px}.toolbar{gap:6px}}
+@media(max-width:520px){html,body{width:100%;min-width:0;overflow-x:hidden}header{height:56px;padding:0 8px;gap:5px}header h1{font-size:13px;max-width:55vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}header button{padding:7px 8px;font-size:12px}.layout{display:block;min-height:calc(100vh - 56px)}aside{width:100%;height:auto;position:sticky;top:56px;z-index:45;display:flex;flex-wrap:nowrap;gap:4px;overflow-x:auto;overflow-y:hidden;padding:6px;border-right:0;border-bottom:1px solid var(--line);-webkit-overflow-scrolling:touch}aside button{flex:0 0 44px;width:44px;height:40px;margin:0;padding:8px 4px;font-size:0;text-align:center;white-space:nowrap}aside button:first-letter{font-size:19px}main{width:100%;padding:8px}.card{padding:10px;border-radius:10px}.grid{gap:8px}.g2,.g3{grid-template-columns:1fr}.toolbar{width:100%;margin-bottom:10px}.toolbar select,.toolbar input{min-width:0;width:100%}.formgrid{grid-template-columns:1fr;gap:5px}.modal{padding:7px;align-items:flex-start}.modalbox{width:100%;max-width:none;max-height:calc(100vh - 14px);padding:12px;border-radius:12px}.modalhead{position:sticky;top:0;background:var(--card);z-index:2}.actions{flex-wrap:wrap}.actions button{flex:1 1 auto;min-height:40px}.tablewrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.table{min-width:620px;font-size:12px}.table th,.table td{padding:7px}#treeViewport{height:calc(100vh - 180px);min-height:420px}.privacyGrid{grid-template-columns:1fr}.userBadge{display:none}.stat{font-size:24px}input,select,textarea{font-size:16px;padding:10px}button{min-height:40px}.photoPreview{width:80px;height:80px}}
+@media(max-width:360px){header h1{font-size:12px}aside button{flex-basis:40px;width:40px}main{padding:6px}}
+
+.relation-row,.relation-multi-row{display:flex;gap:6px;align-items:flex-start}
+.relation-row select,.relation-multi-row select{flex:1;min-width:0}
+.relation-row .small,.relation-multi-row .small{white-space:nowrap;padding:8px 10px}
+
 </style></head>
 <body>
 <div id="loading" class="loading">⏳ იტვირთება...</div>
@@ -77,8 +85,8 @@ function saveConfig(c){localStorage.setItem(SUPA_CFG,JSON.stringify(c))}
 function openConfig(){
   const c=config();
   $('modalTitle').textContent='🔌 Supabase კავშირი';
-  $('modalBody').innerHTML=`<div class="notice">გამოიყენე მხოლოდ <b>Publishable key</b> / ძველი <b>anon public key</b>. <b>service_role / Secret key HTML-ში არ ჩასვა.</b></div><form id="cfgForm"><label>Project URL</label><input id="cfgUrl" value="${esc(c.url||SUPABASE_URL)}"><label>Publishable / anon public key</label><input id="cfgKey" value="${esc(c.key||SUPABASE_PUBLISHABLE_KEY)}"><div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button><button class="primary">შენახვა და დაკავშირება</button></div></form>`;
-  $('cfgForm').onsubmit=async e=>{e.preventDefault();const url=$('cfgUrl').value.trim().replace(/\/$/,'');const key=$('cfgKey').value.trim();if(!url||!key)return toast('URL და public key ორივე საჭიროა');saveConfig({url,key});await initSupabase();closeModal()};
+  $('modalBody').innerHTML=`<div class="notice">გამოიყენე მხოლოდ <b>Publishable key</b> / ძველი <b>anon public key</b>. <b>service_role / Secret key HTML-ში არ ჩასვა.</b></div><form id="cfgForm"><label>Project URL</label><input id="cfgUrl" value="${esc(c.url||SUPABASE_URL)}"><label>Publishable / anon public key</label><input id="cfgKey" value="${esc(c.key||SUPABASE_PUBLISHABLE_KEY)}"><label>Admin Edge Function სახელი</label><input id="cfgFn" value="${esc(c.adminFunction||'admin-user-action')}" placeholder="admin-user-action"><div class="actions"><button type="button" onclick="clearRelationDuplicates()">🔧 კავშირების გასწორება</button><button type="button" onclick="closeModal()">გაუქმება</button><button class="primary">შენახვა და დაკავშირება</button></div></form>`;
+  $('cfgForm').onsubmit=async e=>{e.preventDefault();const url=$('cfgUrl').value.trim().replace(/\/$/,'');const key=$('cfgKey').value.trim();if(!url||!key)return toast('URL და public key ორივე საჭიროა');saveConfig({url,key,adminFunction:$('cfgFn').value.trim()||'admin-user-action'});await initSupabase();closeModal()};
   $('modal').classList.add('show');
 }
 function isRecoveryUrl(){
@@ -188,7 +196,25 @@ async function resetPassword(){
     toast('პაროლის აღდგენის წერილი გაიგზავნა');
   }catch(e){toast(e.message)}
 }
-async function logout(){try{if(supa)await supa.auth.signOut()}catch(e){console.warn(e)}session=null;currentProfile=null;showAuth()}
+let autoRefreshTimer=null;
+let autoRefreshBusy=false;
+async function autoRefreshData(){
+  if(autoRefreshBusy||!supa||!session||!currentProfile?.family_id)return;
+  autoRefreshBusy=true;
+  try{
+    await loadRemote();
+    refreshAll();
+  }catch(e){console.warn('ავტომატური განახლება:',e.message||e)}
+  finally{autoRefreshBusy=false}
+}
+function startAutoRefresh(){
+  if(autoRefreshTimer)clearInterval(autoRefreshTimer);
+  autoRefreshTimer=setInterval(autoRefreshData,5000);
+}
+function stopAutoRefresh(){
+  if(autoRefreshTimer){clearInterval(autoRefreshTimer);autoRefreshTimer=null}
+}
+async function logout(){stopAutoRefresh();try{if(supa)await supa.auth.signOut()}catch(e){console.warn(e)}session=null;currentProfile=null;showAuth()}
 async function afterLogin(){
   if(!supa||!session)return;loading(true);
   try{
@@ -199,84 +225,103 @@ async function afterLogin(){
     if(currentProfile.approved===false&&currentProfile.role!=='admin'){
       hideAuth();document.querySelector('main').innerHTML='<div class="card"><h2>⏳ ანგარიში ელოდება Admin-ის დამტკიცებას</h2><p>რეგისტრაცია წარმატებით დასრულდა. სანამ Admin დაგამტკიცებს, ოჯახის მონაცემებზე წვდომა არ მოგეცემა.</p><button onclick="logout()">🚪 გამოსვლა</button></div>';return;
     }
-    hideAuth();$('userBadge').textContent=`${currentProfile.display_name||session.user.email} • ${currentProfile.role||'user'}`;await loadRemote();refreshAll();
+    hideAuth();$('userBadge').textContent=`${currentProfile.display_name||session.user.email} • ${currentProfile.role||'user'}`;await loadRemote();refreshAll();startAutoRefresh();
   }catch(e){console.error(e);toast('პროფილის/მონაცემების ჩატვირთვა ვერ მოხერხდა: '+e.message)}finally{loading(false)}
 }
 function tableMap(){return{people:'people',relations:'relationships',marriages:'marriages',familyUnits:'family_units',families:'families',sources:'sources',messages:'messages',audit:'audit_log',requests:'relationship_requests'}}
-async function loadRemote(){if(!supa||!session||!currentProfile?.family_id)return;let m=tableMap(),result={};for(let [k,t] of Object.entries(m)){let q=supa.from(t).select('*');if(t==='families')q=q.eq('id',currentProfile.family_id);else if(['people','relationships','marriages','family_units','sources','messages','audit_log','relationship_requests'].includes(t))q=q.eq('family_id',currentProfile.family_id);let {data,error}=await q;if(error){console.warn(t,error.message);result[k]=[];continue}result[k]=data||[]}db.people=(result.people||[]).map(r=>normalizePerson(r.data?Object.assign({},r.data,{id:r.id}):r));db.relations=(result.relations||[]).map(r=>({id:r.id,from:r.from_person||r.from,to:r.to_person||r.to,type:r.type,status:r.status||'confirmed',note:r.note||'',sourceIds:r.source_ids||[],createdAt:r.created_at}));db.marriages=result.marriages||[];db.familyUnits=result.familyUnits||[];db.families=result.families||[];db.sources=result.sources||[];db.messages=result.messages||[];db.audit=result.audit||[];db.requests=result.requests||[];rebuildDerivedPersonFields()}
-async function upsertRow(table,row){if(!supa||!session||!currentProfile?.family_id)throw new Error('ოჯახის ანგარიში არ არის დაკავშირებული');let payload=Object.assign({},row,{owner_id:session.user.id,family_id:currentProfile.family_id});let {error}=await supa.from(table).upsert(payload,{onConflict:'id'});if(error)throw error}
-async function deleteRow(table,id){let {error}=await supa.from(table).delete().eq('id',id).eq('family_id',currentProfile.family_id);if(error)throw error}
-async function savePersonRemote(p){await upsertRow('people',{id:p.id,data:p})}
+async function loadRemote(){
+  if(!supa||!session||!currentProfile?.family_id)return;
+  const m=tableMap();
+  const familyId=currentProfile.family_id;
+  const entries=Object.entries(m);
+  // ყველა ცხრილი პარალელურად იტვირთება. შეცდომის დროს ძველი მონაცემები აღარ იშლება.
+  const responses=await Promise.all(entries.map(async ([k,t])=>{
+    try{
+      let q=supa.from(t).select('*');
+      if(t==='families') q=q.eq('id',familyId);
+      else if(['people','relationships','marriages','family_units','sources','messages','audit_log','relationship_requests'].includes(t)) q=q.eq('family_id',familyId);
+      const {data,error}=await q;
+      if(error){console.warn('Supabase load '+t+':',error.message);return [k,{ok:false,data:null}]}
+      return [k,{ok:true,data:data||[]}];
+    }catch(e){console.warn('Supabase load '+t+':',e);return [k,{ok:false,data:null}]}
+  }));
+  const result=Object.fromEntries(responses);
+  if(result.people?.ok) db.people=(result.people.data||[]).map(r=>normalizePerson(r.data?Object.assign({},r.data,{id:r.id}):r));
+  if(result.relations?.ok) db.relations=(result.relations.data||[]).map(r=>({id:r.id,from:r.from_person||r.from,to:r.to_person||r.to,type:r.type,status:r.status||'confirmed',note:r.note||'',sourceIds:r.source_ids||[],createdAt:r.created_at||now()}));
+  if(result.marriages?.ok) db.marriages=(result.marriages.data||[]).map(m=>({id:m.id,person1:m.person1,person2:m.person2,startDate:m.startdate||'',endDate:m.enddate||null,status:m.status||'unknown',place:m.place||'',note:m.note||'',sourceIds:m.sourceids||[]}));
+  if(result.familyUnits?.ok) db.familyUnits=result.familyUnits.data||[];
+  if(result.families?.ok) db.families=result.families.data||[];
+  if(result.sources?.ok) db.sources=result.sources.data||[];
+  if(result.messages?.ok) db.messages=result.messages.data||[];
+  if(result.audit?.ok) db.audit=result.audit.data||[];
+  if(result.requests?.ok) db.requests=result.requests.data||[];
+  rebuildDerivedPersonFields();
+}
+async function upsertRow(table,row){
+  if(!supa||!session||!currentProfile?.family_id)throw new Error('Supabase სესია ან ოჯახის ID არ არის');
+  const payload=Object.assign({},row,{family_id:currentProfile.family_id});
+  const {data,error}=await supa.from(table).upsert(payload,{onConflict:'id'}).select('*').single();
+  if(error)throw error;
+  return data;
+}
+async function deleteRow(table,id){
+  if(!supa||!session||!currentProfile?.family_id)throw new Error('Supabase სესია ან ოჯახის ID არ არის');
+  if(!id)throw new Error('წასაშლელი ID არ არის');
+  const {error}=await supa.from(table).delete().eq('id',id).eq('family_id',currentProfile.family_id);
+  if(error)throw error;
+}
+async function savePersonRemote(p){
+  if(!p||!p.id)throw new Error('პიროვნების ID არ არსებობს');
+  if(!supa||!session||!currentProfile?.family_id)throw new Error('Supabase სესია ან ოჯახის ID არ არის');
+  const payload={id:p.id,data:p,owner_id:session.user.id,family_id:currentProfile.family_id};
+  const {data,error}=await supa.from('people').upsert(payload,{onConflict:'id'}).select('*').single();
+  if(error)throw error;
+  return data;
+}
 async function saveRelationRemote(r){
-  if(!supa||!session||!currentProfile?.family_id)throw new Error('ოჯახის ანგარიში არ არის დაკავშირებული');
   if(!r||!r.from||!r.to||!r.type)throw new Error('ურთიერთობის მონაცემები არასრულია');
-
-  const base={
-    from_person:r.from,
-    to_person:r.to,
-    type:r.type,
-    status:r.status||'confirmed',
-    note:r.note||'',
-    source_ids:r.sourceIds||[],
-    created_at:r.createdAt||now()
-  };
-
-  // UNIQUE: family_id + from_person + to_person + type
-  // ჯერ ვამოწმებთ, ხომ არ არსებობს ზუსტად იგივე კავშირი.
-  const {data:existing,error:checkError}=await supa
-    .from('relationships')
-    .select('id,from_person,to_person,type,status,note,source_ids,created_at')
-    .eq('family_id',currentProfile.family_id)
-    .eq('from_person',r.from)
-    .eq('to_person',r.to)
-    .eq('type',r.type)
-    .maybeSingle();
-
+  if(r.from===r.to)throw new Error('პირი საკუთარ თავთან ვერ დაკავშირდება');
+  const base={from_person:r.from,to_person:r.to,type:r.type,status:r.status||'confirmed',note:r.note||'',source_ids:r.sourceIds||[],created_at:r.createdAt||now()};
+  const {data:existing,error:checkError}=await supa.from('relationships').select('id,from_person,to_person,type,status,note,source_ids,created_at').eq('family_id',currentProfile.family_id).eq('from_person',r.from).eq('to_person',r.to).eq('type',r.type).maybeSingle();
   if(checkError)throw checkError;
-
-  // თუ უკვე არსებობს, აღარ ვაკეთებთ INSERT-ს.
-  // არსებული ჩანაწერის ID-ს ვიყენებთ, რათა ლოკალური და Supabase მონაცემები დაემთხვეს.
   if(existing){
     r.id=existing.id;
-    r.status=existing.status||r.status||'confirmed';
-    r.note=existing.note||r.note||'';
-    r.sourceIds=existing.source_ids||r.sourceIds||[];
-    r.createdAt=existing.created_at||r.createdAt||now();
-    return existing;
+    const {data:updated,error:updateError}=await supa.from('relationships').update({from_person:r.from,to_person:r.to,type:r.type,status:r.status||'confirmed',note:r.note||'',source_ids:r.sourceIds||[],created_at:r.createdAt||existing.created_at||now()}).eq('id',existing.id).eq('family_id',currentProfile.family_id).select('id,from_person,to_person,type,status,note,source_ids,created_at').single();
+    if(updateError)throw updateError;
+    return updated;
   }
-
-  // მხოლოდ არარსებული ურთიერთობა ემატება.
-  const {data,error}=await supa
-    .from('relationships')
-    .insert(Object.assign({},base,{id:r.id,owner_id:session.user.id,family_id:currentProfile.family_id}))
-    .select('id,from_person,to_person,type,status,note,source_ids,created_at')
-    .single();
-
+  const {data,error}=await supa.from('relationships').insert(Object.assign({},base,{id:r.id,owner_id:session.user.id,family_id:currentProfile.family_id})).select('id,from_person,to_person,type,status,note,source_ids,created_at').single();
   if(error){
-    // თუ ორ ბრაუზერს/მოთხოვნას შორის ერთდროულად დაემატა იგივე კავშირი,
-    // UNIQUE შეცდომასაც მშვიდად ვამუშავებთ და უკვე არსებულ ჩანაწერს ვიღებთ.
     if(String(error.message||'').includes('relationships_family_id_from_person_to_person_type_key')){
-      const {data:race,error:raceError}=await supa
-        .from('relationships')
-        .select('id,from_person,to_person,type,status,note,source_ids,created_at')
-        .eq('family_id',currentProfile.family_id)
-        .eq('from_person',r.from)
-        .eq('to_person',r.to)
-        .eq('type',r.type)
-        .maybeSingle();
+      const {data:race,error:raceError}=await supa.from('relationships').select('id,from_person,to_person,type,status,note,source_ids,created_at').eq('family_id',currentProfile.family_id).eq('from_person',r.from).eq('to_person',r.to).eq('type',r.type).maybeSingle();
       if(raceError)throw raceError;
-      if(race){
-        r.id=race.id;
-        return race;
-      }
+      if(race){r.id=race.id;return race;}
     }
     throw error;
   }
-
-  r.id=data.id;
+  r.id=data.id;return data;
+}
+async function saveMarriageRemote(m){
+  if(!m||!m.id)throw new Error('ქორწინების ID არ არსებობს');
+  if(!supa||!session||!currentProfile?.family_id)throw new Error('Supabase სესია ან ოჯახის ID არ არის');
+  // Supabase marriages ცხრილის რეალური სვეტებია: person1, person2, startdate, enddate, status, place, note, sourceids.
+  const payload={
+    id:m.id,
+    person1:m.person1,
+    person2:m.person2,
+    startdate:m.startDate||null,
+    enddate:m.endDate||null,
+    status:m.status||'unknown',
+    place:m.place||'',
+    note:m.note||'',
+    sourceids:Array.isArray(m.sourceIds)?m.sourceIds:[],
+    owner_id:session.user.id,
+    family_id:currentProfile.family_id
+  };
+  const {data,error}=await supa.from('marriages').upsert(payload,{onConflict:'id'}).select('*').single();
+  if(error)throw error;
   return data;
 }
-async function saveMarriageRemote(m){await upsertRow('marriages',Object.assign({},m,{created_at:m.createdAt||now()}))}
 async function saveFamilyRemote(f){await upsertRow('family_units',Object.assign({},f,{created_at:f.createdAt||now()}))}
 async function saveSourceRemote(s){await upsertRow('sources',Object.assign({},s,{created_at:s.createdAt||now()}))}
 async function saveAuditRemote(a){await upsertRow('audit_log',Object.assign({},a,{created_at:a.at||now()}))}
@@ -444,10 +489,129 @@ function treeReset(){treeScale=1;$('treeCanvas').style.transform='scale(1)';$('t
 function fitTree(){let v=$('treeViewport'),w=treeState.width||2000,h=treeState.height||1200,s=Math.min((v.clientWidth-30)/w,(v.clientHeight-30)/h,1);treeScale=Math.max(.35,s);$('treeCanvas').style.transform=`scale(${treeScale})`;$('treeCanvas').style.left=Math.max(10,(v.clientWidth-w*treeScale)/2)+'px';$('treeCanvas').style.top=Math.max(10,(v.clientHeight-h*treeScale)/2)+'px'}
 function privacyCheckbox(key,label,checked){return `<label class="checkline"><input type="checkbox" id="pv_${key}" ${checked?'checked':''}> <span>${label}</span></label>`}
 function privacyStateFromForm(){return{photo:$('pv_photo').checked,phone:$('pv_phone').checked,email:$('pv_email').checked,address:$('pv_address').checked,map:$('pv_map').checked,dna:$('pv_dna').checked,blood:$('pv_blood').checked,history:$('pv_history').checked,comments:$('pv_comments').checked}}
-function fillPersonSelectors(p,editing){let others=db.people.filter(x=>x.id!==editing),male=others.filter(x=>x.gender==='male'),female=others.filter(x=>x.gender==='female'),opt=a=>'<option value="">— უცნობი / არაა მითითებული —</option>'+a.map(x=>`<option value="${x.id}">${genderIcon(x.gender)} ${esc(personName(x))} — ${esc(x.personalId)}</option>`).join(''),multi=a=>a.map(x=>`<option value="${x.id}">${genderIcon(x.gender)} ${esc(personName(x))} — ${esc(x.personalId)}</option>`).join('');$('pf_bioFather').innerHTML=opt(male);$('pf_stepFather').innerHTML=opt(male);$('pf_bioMother').innerHTML=opt(female);$('pf_stepMother').innerHTML=opt(female);$('pf_bioSons').innerHTML=multi(male);$('pf_bioDaughters').innerHTML=multi(female);$('pf_adoptSons').innerHTML=multi(male);$('pf_adoptDaughters').innerHTML=multi(female);$('pf_bioFather').value=p.biologicalFather||'';$('pf_stepFather').value=p.stepFather||'';$('pf_bioMother').value=p.biologicalMother||'';$('pf_stepMother').value=p.stepMother||'';setMulti('pf_bioSons',p.biologicalChildren||[]);setMulti('pf_bioDaughters',p.biologicalChildren||[]);setMulti('pf_adoptSons',p.adoptedChildren||[]);setMulti('pf_adoptDaughters',p.adoptedChildren||[])}
+function fillPersonSelectors(p,editing){
+  let others=db.people.filter(x=>x.id!==editing),male=others.filter(x=>x.gender==='male'),female=others.filter(x=>x.gender==='female');
+  const opt=a=>'<option value="">— უცნობი / არაა მითითებული —</option>'+a.map(x=>`<option value="${x.id}">${genderIcon(x.gender)} ${esc(personName(x))} — ${esc(x.personalId)}</option>`).join('');
+  const multi=a=>a.map(x=>`<option value="${x.id}">${genderIcon(x.gender)} ${esc(personName(x))} — ${esc(x.personalId)}</option>`).join('');
+  $('pf_bioFather').innerHTML=opt(male);$('pf_stepFather').innerHTML=opt(male);
+  $('pf_bioMother').innerHTML=opt(female);$('pf_stepMother').innerHTML=opt(female);
+  $('pf_bioSons').innerHTML=multi(male);$('pf_bioDaughters').innerHTML=multi(female);
+  $('pf_adoptSons').innerHTML=multi(male);$('pf_adoptDaughters').innerHTML=multi(female);
+  $('pf_bioFather').value=p.biologicalFather||'';$('pf_stepFather').value=p.stepFather||'';
+  $('pf_bioMother').value=p.biologicalMother||'';$('pf_stepMother').value=p.stepMother||'';
+  const bioSons=db.relations.filter(r=>r.from===p.id&&r.type==='biological_son').map(r=>r.to);
+  const bioDaughters=db.relations.filter(r=>r.from===p.id&&r.type==='biological_daughter').map(r=>r.to);
+  const adoptSons=db.relations.filter(r=>r.from===p.id&&r.type==='adopted_son').map(r=>r.to);
+  const adoptDaughters=db.relations.filter(r=>r.from===p.id&&r.type==='adopted_daughter').map(r=>r.to);
+  setMulti('pf_bioSons',bioSons);setMulti('pf_bioDaughters',bioDaughters);
+  setMulti('pf_adoptSons',adoptSons);setMulti('pf_adoptDaughters',adoptDaughters);
+}
 function setMulti(id,ids){[...$(id).options].forEach(o=>o.selected=ids.includes(o.value))}function vals(id){return [...$(id).selectedOptions].map(x=>x.value)}
-function openPersonModal(id){if(!session)return showAuth();let p=id?getPerson(id):blankPerson();$('modalTitle').textContent=id?'ადამიანის რედაქტირება':'ახალი ადამიანი';$('modalBody').innerHTML=`<form id="personForm"><div class="formgrid"><div><label>Personal ID</label><input id="pf_personalId" value="${esc(p.personalId)}" required></div><div><label>სქესი</label><select id="pf_gender"><option value="male">👨 კაცი</option><option value="female">👩 ქალი</option><option value="unknown">🧑 უცნობი</option></select></div><div><label>სახელი</label><input id="pf_firstName" value="${esc(p.firstName)}" required></div><div><label>გვარი</label><input id="pf_lastName" value="${esc(p.lastName)}"></div><div><label>მამის სახელი / პატრონიმი</label><input id="pf_fatherName" value="${esc(p.fatherName)}"></div><div><label>მეტსახელი</label><input id="pf_nickname" value="${esc(p.nickname)}"></div><div><label>დაბადების თარიღი</label><input type="date" id="pf_birthDate" value="${esc(p.birthDate)}"></div><div><label>გარდაცვალების თარიღი</label><input type="date" id="pf_deathDate" value="${esc(p.deathDate)}"></div><div><label>ბიოლოგიური მამა</label><select id="pf_bioFather"></select></div><div><label>არაბიოლოგიური მამა / მამინაცვალი</label><select id="pf_stepFather"></select></div><div><label>ბიოლოგიური დედა</label><select id="pf_bioMother"></select></div><div><label>არაბიოლოგიური დედა / დედინაცვალი</label><select id="pf_stepMother"></select></div><div><label>ბიოლოგიური ვაჟები</label><select multiple id="pf_bioSons"></select></div><div><label>ბიოლოგიური ქალიშვილები</label><select multiple id="pf_bioDaughters"></select></div><div><label>ნაშვილები / არაბიოლოგიური ვაჟები</label><select multiple id="pf_adoptSons"></select></div><div><label>ნაშვილები / არაბიოლოგიური ქალიშვილები</label><select multiple id="pf_adoptDaughters"></select></div><div><label>ტელეფონი</label><input id="pf_phone" value="${esc(p.phone)}"></div><div><label>Email</label><input id="pf_email" value="${esc(p.email)}"></div><div class="full"><label>მისამართი</label><input id="pf_address" value="${esc(p.address)}"></div><div><label>Latitude</label><input id="pf_lat" value="${esc(p.lat)}"></div><div><label>Longitude</label><input id="pf_lon" value="${esc(p.lon)}"></div><div class="full"><label>Google Maps URL</label><input id="pf_mapUrl" value="${esc(p.mapUrl)}"></div><div><label>სისხლის ჯგუფი</label><input id="pf_blood" value="${esc(p.bloodType)}"></div><div><label>DNA კომპანია</label><input id="pf_dnaCompany" value="${esc(p.dnaCompany)}"></div><div><label>DNA Test ID</label><input id="pf_dnaId" value="${esc(p.dnaTestId)}"></div><div><label>DNA Test Date</label><input type="date" id="pf_dnaDate" value="${esc(p.dnaTestDate)}"></div><div class="full"><label>ისტორიული მონაცემები</label><textarea id="pf_history">${esc(p.history)}</textarea></div><div class="full"><label>კომენტარები</label><textarea id="pf_comments">${esc(p.comments)}</textarea></div><div><label>საერთო Privacy</label><select id="pf_privacy"><option value="public">public</option><option value="family">family</option><option value="private">private</option></select></div><div><label>ფოტო</label><input type="file" id="pf_photo" accept="image/*"></div><div class="full"><img id="photoPreview" class="photoPreview" ${p.photo?'src="'+p.photo+'"':''}></div><div class="full privacyBox"><h3>🔒 ველის მიხედვით კონფიდენციალურობა</h3><div class="privacyGrid">${privacyCheckbox('photo','📷 ფოტო',vis(p,'photo'))}${privacyCheckbox('phone','📞 ტელეფონი',vis(p,'phone'))}${privacyCheckbox('email','✉️ E-mail',vis(p,'email'))}${privacyCheckbox('address','📍 მისამართი',vis(p,'address'))}${privacyCheckbox('map','🗺️ მდებარეობა',vis(p,'map'))}${privacyCheckbox('dna','🧬 DNA',vis(p,'dna'))}${privacyCheckbox('blood','🩸 სისხლის ჯგუფი',vis(p,'blood'))}${privacyCheckbox('history','📜 ისტორია',vis(p,'history'))}${privacyCheckbox('comments','💬 კომენტარები',vis(p,'comments'))}</div></div></div><div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button>${id?`<button type="button" class="danger" onclick="deletePerson('${p.id}')">წაშლა</button>`:''}<button class="primary">შენახვა</button></div></form>`;fillPersonSelectors(p,id);$('pf_gender').value=p.gender;$('pf_privacy').value=p.privacy||'family';$('pf_photo').addEventListener('change',e=>{let f=e.target.files[0];if(f){let r=new FileReader();r.onload=()=>{$('photoPreview').src=r.result;$('photoPreview').dataset.data=r.result};r.readAsDataURL(f)}});$('personForm').onsubmit=e=>{e.preventDefault();savePersonForm(id)};$('modal').classList.add('show')}
-async function savePersonForm(id){let p=id?getPerson(id):blankPerson();Object.assign(p,{personalId:$('pf_personalId').value.trim(),gender:$('pf_gender').value,firstName:$('pf_firstName').value.trim(),lastName:$('pf_lastName').value.trim(),fatherName:$('pf_fatherName').value.trim(),nickname:$('pf_nickname').value.trim(),birthDate:$('pf_birthDate').value,deathDate:$('pf_deathDate').value,phone:$('pf_phone').value,email:$('pf_email').value,address:$('pf_address').value,lat:$('pf_lat').value,lon:$('pf_lon').value,mapUrl:$('pf_mapUrl').value,bloodType:$('pf_blood').value,dnaCompany:$('pf_dnaCompany').value,dnaTestId:$('pf_dnaId').value,dnaTestDate:$('pf_dnaDate').value,history:$('pf_history').value,comments:$('pf_comments').value,privacy:$('pf_privacy').value,visibility:privacyStateFromForm(),updatedAt:now()});if($('photoPreview').dataset.data)p.photo=$('photoPreview').dataset.data;if(!id)db.people.push(p);reconcilePersonRelations(p);try{await savePersonRemote(p);for(let r of db.relations.filter(r=>r.from===p.id||r.to===p.id))await saveRelationRemote(r);await logAction(id?'PERSON_UPDATED':'PERSON_CREATED',personName(p));closeModal();refreshAll();toast('Supabase-ში შენახულია')}catch(e){toast('შენახვის შეცდომა: '+e.message);if(!id)db.people=db.people.filter(x=>x.id!==p.id)}}
+
+function clearRelationField(id){
+  const el=$(id);
+  if(!el)return;
+  el.value='';
+  toast('ბიოლოგიური კავშირი გაუქმებულია. შენახვისას ცვლილება დაფიქსირდება.');
+}
+
+function clearMultiRelationField(id){
+  const el=$(id);
+  if(!el)return;
+  [...el.options].forEach(o=>o.selected=false);
+  toast('ბიოლოგიური კავშირები გაუქმებულია. შენახვისას ცვლილება დაფიქსირდება.');
+}
+
+function enforceUniqueRelationSelection(primaryId, secondaryId){
+  const primary=$(primaryId), secondary=$(secondaryId);
+  if(!primary||!secondary)return;
+  const selected=new Set([...primary.selectedOptions].map(o=>o.value).filter(Boolean));
+  [...secondary.options].forEach(o=>{ if(selected.has(o.value)) o.selected=false; });
+}
+function setupRelationUniqueness(){
+  [['pf_bioSons','pf_adoptSons'],['pf_adoptSons','pf_bioSons'],['pf_bioDaughters','pf_adoptDaughters'],['pf_adoptDaughters','pf_bioDaughters']].forEach(([a,b])=>{
+    const el=$(a); if(el) el.onchange=()=>enforceUniqueRelationSelection(a,b);
+  });
+  [['pf_bioFather','pf_stepFather'],['pf_stepFather','pf_bioFather'],['pf_bioMother','pf_stepMother'],['pf_stepMother','pf_bioMother']].forEach(([a,b])=>{
+    const aEl=$(a), bEl=$(b); if(aEl) aEl.onchange=()=>{ if(aEl.value && aEl.value===bEl.value) bEl.value=''; };
+  });
+  // თუ ძველი მონაცემებიდან დუბლიკატი უკვე არსებობს, ბიოლოგიური კავშირი პრიორიტეტულია.
+  enforceUniqueRelationSelection('pf_bioSons','pf_adoptSons');
+  enforceUniqueRelationSelection('pf_bioDaughters','pf_adoptDaughters');
+  if($('pf_bioFather').value && $('pf_bioFather').value===$('pf_stepFather').value) $('pf_stepFather').value='';
+  if($('pf_bioMother').value && $('pf_bioMother').value===$('pf_stepMother').value) $('pf_stepMother').value='';
+}
+
+function validatePersonRelations(){
+  const bf=$('pf_bioFather').value, sf=$('pf_stepFather').value, bm=$('pf_bioMother').value, sm=$('pf_stepMother').value;
+  if(bf&&sf&&bf===sf)return 'ერთი და იგივე ადამიანი ერთდროულად ვერ იქნება ბიოლოგიური მამა და მამინაცვალი.';
+  if(bm&&sm&&bm===sm)return 'ერთი და იგივე ადამიანი ერთდროულად ვერ იქნება ბიოლოგიური დედა და დედინაცვალი.';
+  const groups=[['ვაჟებში',vals('pf_bioSons'),'ნაშვილებ/არაბიოლოგიურ ვაჟებში',vals('pf_adoptSons')],['ქალიშვილებში',vals('pf_bioDaughters'),'ნაშვილებ/არაბიოლოგიურ ქალიშვილებში',vals('pf_adoptDaughters')]];
+  for(const [a,x,b,y] of groups){const dup=x.filter(v=>y.includes(v));if(dup.length){const names=dup.map(v=>personName(getPerson(v))).join(', ');return `${names} ერთდროულად არჩეულია ${a} და ${b}. მოხსენით ერთ-ერთი მონიშვნა.`}}
+  const selectedParents=[bf,sf,bm,sm].filter(Boolean);if(new Set(selectedParents).size!==selectedParents.length)return 'ერთი და იგივე ადამიანი მშობლის/მამინაცვლის ველებში ორჯერ ვერ იქნება მითითებული.';
+  return '';
+}
+function clearRelationDuplicates(){
+  const bs=vals('pf_bioSons'),bd=vals('pf_bioDaughters'),as=vals('pf_adoptSons'),ad=vals('pf_adoptDaughters');
+  const keep=new Set([...bs,...bd]);
+  [...$('pf_adoptSons').options].forEach(o=>{if(keep.has(o.value))o.selected=false});
+  [...$('pf_adoptDaughters').options].forEach(o=>{if(keep.has(o.value))o.selected=false});
+  if($('pf_bioFather').value&&$('pf_bioFather').value===$('pf_stepFather').value)$('pf_stepFather').value='';
+  if($('pf_bioMother').value&&$('pf_bioMother').value===$('pf_stepMother').value)$('pf_stepMother').value='';
+  toast('დუბლირებული კავშირები გასწორდა — ბიოლოგიური კავშირი შენარჩუნებულია.');
+}
+function openPersonModal(id){if(!session)return showAuth();let p=id?getPerson(id):blankPerson();$('modalTitle').textContent=id?'ადამიანის რედაქტირება':'ახალი ადამიანი';$('modalBody').innerHTML=`<form id="personForm"><div class="formgrid"><div><label>Personal ID <span class="muted">(უნიკალური)</span></label><input id="pf_personalId" value="${esc(p.personalId)}" required><small class="muted">ერთი Personal ID მხოლოდ ერთ ადამიანს ეკუთვნის. დუბლიკატი არ შეინახება.</small></div><div><label>სქესი</label><select id="pf_gender"><option value="male">👨 კაცი</option><option value="female">👩 ქალი</option><option value="unknown">🧑 უცნობი</option></select></div><div><label>სახელი</label><input id="pf_firstName" value="${esc(p.firstName)}" required></div><div><label>გვარი</label><input id="pf_lastName" value="${esc(p.lastName)}"></div><div><label>მამის სახელი / პატრონიმი</label><input id="pf_fatherName" value="${esc(p.fatherName)}"></div><div><label>მეტსახელი</label><input id="pf_nickname" value="${esc(p.nickname)}"></div><div><label>დაბადების თარიღი</label><input type="date" id="pf_birthDate" value="${esc(p.birthDate)}"></div><div><label>გარდაცვალების თარიღი</label><input type="date" id="pf_deathDate" value="${esc(p.deathDate)}"></div><div><label>ბიოლოგიური მამა</label><select id="pf_bioFather"></select><small class="muted">არჩეული მამა ავტომატურად დაუკავშირდება ამ ადამიანს როგორც ბიოლოგიური მამა.</small></div><div><label>არაბიოლოგიური მამა / მამინაცვალი</label><select id="pf_stepFather"></select></div><div><label>ბიოლოგიური დედა</label><select id="pf_bioMother"></select><small class="muted">არჩეული დედა ავტომატურად დაუკავშირდება ამ ადამიანს როგორც ბიოლოგიური დედა.</small></div><div><label>არაბიოლოგიური დედა / დედინაცვალი</label><select id="pf_stepMother"></select></div><div><label>ბიოლოგიური ვაჟები</label><select multiple id="pf_bioSons"></select></div><div><label>ბიოლოგიური ქალიშვილები</label><select multiple id="pf_bioDaughters"></select></div><div><label>ნაშვილები / არაბიოლოგიური ვაჟები</label><select multiple id="pf_adoptSons"></select></div><div><label>ნაშვილები / არაბიოლოგიური ქალიშვილები</label><select multiple id="pf_adoptDaughters"></select></div><div><label>ტელეფონი</label><input id="pf_phone" value="${esc(p.phone)}"></div><div><label>Email</label><input id="pf_email" value="${esc(p.email)}"></div><div class="full"><label>მისამართი</label><input id="pf_address" value="${esc(p.address)}"></div><div><label>Latitude</label><input id="pf_lat" value="${esc(p.lat)}"></div><div><label>Longitude</label><input id="pf_lon" value="${esc(p.lon)}"></div><div class="full"><label>Google Maps URL</label><input id="pf_mapUrl" value="${esc(p.mapUrl)}"></div><div><label>სისხლის ჯგუფი</label><input id="pf_blood" value="${esc(p.bloodType)}"></div><div><label>DNA კომპანია</label><input id="pf_dnaCompany" value="${esc(p.dnaCompany)}"></div><div><label>DNA Test ID</label><input id="pf_dnaId" value="${esc(p.dnaTestId)}"></div><div><label>DNA Test Date</label><input type="date" id="pf_dnaDate" value="${esc(p.dnaTestDate)}"></div><div class="full"><label>ისტორიული მონაცემები</label><textarea id="pf_history">${esc(p.history)}</textarea></div><div class="full"><label>კომენტარები</label><textarea id="pf_comments">${esc(p.comments)}</textarea></div><div><label>საერთო Privacy</label><select id="pf_privacy"><option value="public">public</option><option value="family">family</option><option value="private">private</option></select></div><div><label>ფოტო</label><input type="file" id="pf_photo" accept="image/*"></div><div class="full"><img id="photoPreview" class="photoPreview" ${p.photo?'src="'+p.photo+'"':''}></div><div class="full privacyBox"><h3>🔒 ველის მიხედვით კონფიდენციალურობა</h3><div class="privacyGrid">${privacyCheckbox('photo','📷 ფოტო',vis(p,'photo'))}${privacyCheckbox('phone','📞 ტელეფონი',vis(p,'phone'))}${privacyCheckbox('email','✉️ E-mail',vis(p,'email'))}${privacyCheckbox('address','📍 მისამართი',vis(p,'address'))}${privacyCheckbox('map','🗺️ მდებარეობა',vis(p,'map'))}${privacyCheckbox('dna','🧬 DNA',vis(p,'dna'))}${privacyCheckbox('blood','🩸 სისხლის ჯგუფი',vis(p,'blood'))}${privacyCheckbox('history','📜 ისტორია',vis(p,'history'))}${privacyCheckbox('comments','💬 კომენტარები',vis(p,'comments'))}</div></div></div><div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button>${id?`<button type="button" class="danger" onclick="deletePerson('${p.id}')">წაშლა</button>`:''}<button class="primary">შენახვა</button></div></form>`;fillPersonSelectors(p,id);setupRelationUniqueness();$('pf_gender').value=p.gender;$('pf_privacy').value=p.privacy||'family';$('pf_photo').addEventListener('change',e=>{let f=e.target.files[0];if(f){let r=new FileReader();r.onload=()=>{$('photoPreview').src=r.result;$('photoPreview').dataset.data=r.result};r.readAsDataURL(f)}});$('personForm').onsubmit=e=>{e.preventDefault();savePersonForm(id)};$('modal').classList.add('show')}
+function normalizePersonKey(v){return String(v||'').trim().toLocaleLowerCase('ka-GE').replace(/\s+/g,' ')}
+function validatePersonIdentity(id){
+  const personalId=String($('pf_personalId').value||'').trim();
+  const first=String($('pf_firstName').value||'').trim();
+  const last=String($('pf_lastName').value||'').trim();
+  if(!personalId)return 'Personal ID სავალდებულოა.';
+  const sameId=db.people.find(x=>x.id!==id&&normalizePersonKey(x.personalId)===normalizePersonKey(personalId));
+  if(sameId)return `❌ ეს Personal ID უკვე გამოყენებულია: ${personName(sameId)} (${sameId.personalId}). Personal ID აუცილებლად უნიკალური უნდა იყოს.`;
+  if(!first)return 'სახელი სავალდებულოა.';
+  const fullKey=normalizePersonKey(first+' '+last);
+  if(fullKey && last){
+    const matches=db.people.filter(x=>x.id!==id&&normalizePersonKey((x.firstName||'')+' '+(x.lastName||''))===fullKey);
+    if(matches.length){
+      const list=matches.slice(0,5).map(x=>`${personName(x)} — ${x.personalId}`).join('\n');
+      const more=matches.length>5?`\nდა კიდევ ${matches.length-5} ჩანაწერი.`:'';
+      const ok=confirm(`⚠️ მსგავსი სახელი და გვარი უკვე არსებობს.\n\n${list}${more}\n\nთუ ეს სხვა ადამიანია, დააჭირე „OK“-ს და ჩანაწერი დაემატება.\nთუ იგივე ადამიანია, დააჭირე „Cancel“-ს და შეამოწმე ჩანაწერი.`);
+      if(!ok)return 'სახელი და გვარის დუბლირება გაუქმდა.';
+    }
+  }
+  return '';
+}
+async function savePersonForm(id){
+  const relationError=validatePersonRelations();
+  if(relationError){toast('⚠️ '+relationError);return}
+  const identityError=validatePersonIdentity(id);
+  if(identityError){toast(identityError);return}
+  let p=id?getPerson(id):blankPerson();
+  const oldRelations=id?db.relations.filter(r=>r.from===p.id||r.to===p.id).map(r=>Object.assign({},r)):[];
+  Object.assign(p,{personalId:$('pf_personalId').value.trim(),gender:$('pf_gender').value,firstName:$('pf_firstName').value.trim(),lastName:$('pf_lastName').value.trim(),fatherName:$('pf_fatherName').value.trim(),nickname:$('pf_nickname').value.trim(),birthDate:$('pf_birthDate').value,deathDate:$('pf_deathDate').value,phone:$('pf_phone').value,email:$('pf_email').value,address:$('pf_address').value,lat:$('pf_lat').value,lon:$('pf_lon').value,mapUrl:$('pf_mapUrl').value,bloodType:$('pf_blood').value,dnaCompany:$('pf_dnaCompany').value,dnaTestId:$('pf_dnaId').value,dnaTestDate:$('pf_dnaDate').value,history:$('pf_history').value,comments:$('pf_comments').value,privacy:$('pf_privacy').value,visibility:privacyStateFromForm(),updatedAt:now()});
+  if($('photoPreview').dataset.data)p.photo=$('photoPreview').dataset.data;
+  if(!id)db.people.push(p);
+  reconcilePersonRelations(p);
+  const newRelations=db.relations.filter(r=>r.from===p.id||r.to===p.id);
+  const oldKeys=new Set(oldRelations.map(r=>r.id));
+  const newKeys=new Set(newRelations.map(r=>r.id));
+  try{
+    await savePersonRemote(p);
+    // წაშლილი/შეცვლილი ძველი კავშირები Supabase-შიც წაიშალოს.
+    for(const r of oldRelations){if(!newKeys.has(r.id))await deleteRemoteRelation(r.id)}
+    for(const r of newRelations)await saveRelationRemote(r);
+    await logAction(id?'PERSON_UPDATED':'PERSON_CREATED',personName(p));
+    closeModal();refreshAll();toast('Supabase-ში შენახულია');
+  }catch(e){
+    console.error('savePersonForm:',e);
+    toast('შენახვის შეცდომა: '+(e?.message||e));
+    if(!id){
+      db.people=db.people.filter(x=>x.id!==p.id);
+      db.relations=db.relations.filter(r=>r.from!==p.id&&r.to!==p.id);
+    }
+  }
+}
 function reconcilePersonRelations(p){db.relations=db.relations.filter(r=>!(r.to===p.id&&['biological_father','biological_mother','step_father','step_mother'].includes(r.type)));[['biological_father',$('pf_bioFather').value],['step_father',$('pf_stepFather').value],['biological_mother',$('pf_bioMother').value],['step_mother',$('pf_stepMother').value]].forEach(([type,v])=>{if(v)ensureRelation(v,type,p.id)});db.relations=db.relations.filter(r=>!(r.from===p.id&&['biological_son','biological_daughter','adopted_son','adopted_daughter'].includes(r.type)));[...vals('pf_bioSons')].forEach(ch=>ensureRelation(p.id,getPerson(ch)?.gender==='female'?'biological_daughter':'biological_son',ch));[...vals('pf_bioDaughters')].forEach(ch=>ensureRelation(p.id,'biological_daughter',ch));[...vals('pf_adoptSons')].forEach(ch=>ensureRelation(p.id,'adopted_son',ch));[...vals('pf_adoptDaughters')].forEach(ch=>ensureRelation(p.id,'adopted_daughter',ch))}
 function ensureRelation(from,type,to,status='confirmed',note=''){if(!from||!to||from===to)return null;let r=db.relations.find(x=>x.from===from&&x.to===to&&x.type===type);if(r){r.status=status;r.note=note;return r.id}r={id:uid('REL'),from,type,to,status,note,sourceIds:[],createdAt:now()};db.relations.push(r);return r.id}
 async function deletePerson(id){if(!confirm('ნამდვილად წავშალოთ?'))return;try{for(let r of db.relations.filter(r=>r.from===id||r.to===id))await deleteRemoteRelation(r.id);await deleteRemotePerson(id);db.people=db.people.filter(p=>p.id!==id);db.relations=db.relations.filter(r=>r.from!==id&&r.to!==id);await logAction('PERSON_DELETED',id);closeModal();refreshAll()}catch(e){toast(e.message)}}
@@ -456,8 +620,66 @@ function openProfile(id){let p=getPerson(id);if(!p)return;let parents=getParents
 function openRelationModal(){let opts=db.people.map(p=>`<option value="${p.id}">${genderIcon(p.gender)} ${esc(personName(p))} — ${esc(p.personalId)}</option>`).join('');$('modalTitle').textContent='ახალი კავშირი';$('modalBody').innerHTML=`<form id="relForm"><div class="formgrid"><div><label>From</label><select id="rf">${opts}</select></div><div><label>To</label><select id="rt">${opts}</select></div><div><label>კავშირის ტიპი</label><select id="rty"><option value="biological_father">ბიოლოგიური მამა</option><option value="biological_mother">ბიოლოგიური დედა</option><option value="step_father">მამინაცვალი</option><option value="step_mother">დედინაცვალი</option><option value="biological_son">ბიოლოგიური ვაჟი</option><option value="biological_daughter">ბიოლოგიური ქალიშვილი</option><option value="adopted_son">ნაშვილები ვაჟი</option><option value="adopted_daughter">ნაშვილები ქალიშვილი</option><option value="spouse">მეუღლე</option><option value="partner">პარტნიორი</option><option value="other_family">სხვა ნათესავი</option></select></div><div><label>სტატუსი</label><select id="rst"><option>confirmed</option><option>probable</option><option>unverified</option></select></div><div class="full"><label>შენიშვნა</label><textarea id="rnote"></textarea></div></div><div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button><button class="primary">შენახვა</button></div></form>`;$('relForm').onsubmit=async e=>{e.preventDefault();if($('rf').value===$('rt').value)return toast('ორი განსხვავებული პირი აირჩიე');let id=ensureRelation($('rf').value,$('rty').value,$('rt').value,$('rst').value,$('rnote').value),r=db.relations.find(x=>x.id===id);try{await saveRelationRemote(r);rebuildDerivedPersonFields();await logAction('RELATION_CREATED',r.type);closeModal();refreshAll()}catch(e){toast(e.message)}};$('modal').classList.add('show')}
 function renderRelations(){$('relationsTable').innerHTML=db.relations.map(r=>`<tr><td>${esc(personName(getPerson(r.from)))}</td><td>${esc(r.type)}</td><td>${esc(personName(getPerson(r.to)))}</td><td>${esc(r.status)}</td><td><button class="small danger" onclick="removeRelation('${r.id}')">წაშლა</button></td></tr>`).join('')||'<tr><td colspan="5">კავშირები არ არის.</td></tr>'}
 async function removeRelation(id){if(!confirm('წავშალოთ კავშირი?'))return;try{await deleteRemoteRelation(id);db.relations=db.relations.filter(r=>r.id!==id);rebuildDerivedPersonFields();await logAction('RELATION_DELETED',id);refreshAll()}catch(e){toast(e.message)}}
-function openMarriageModal(){let opts=db.people.map(p=>`<option value="${p.id}">${genderIcon(p.gender)} ${esc(personName(p))}</option>`).join('');$('modalTitle').textContent='ახალი ოჯახი / ქორწინება';$('modalBody').innerHTML=`<form id="marForm"><div class="formgrid"><div><label>პირი 1</label><select id="mp1">${opts}</select></div><div><label>პირი 2</label><select id="mp2">${opts}</select></div><div><label>დაწყება</label><input type="date" id="ms"></div><div><label>დასასრული</label><input type="date" id="me"></div><div><label>სტატუსი</label><select id="mst"><option>married</option><option>divorced</option><option>widowed</option><option>separated</option><option>unknown</option></select></div><div><label>ადგილი</label><input id="mplace"></div><div class="full"><label>შენიშვნა</label><textarea id="mnote"></textarea></div></div><div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button><button class="primary">შენახვა</button></div></form>`;$('marForm').onsubmit=async e=>{e.preventDefault();if($('mp1').value===$('mp2').value)return toast('ორი განსხვავებული პირი აირჩიე');let m={id:uid('MAR'),person1:$('mp1').value,person2:$('mp2').value,startDate:$('ms').value,endDate:$('me').value,status:$('mst').value,place:$('mplace').value,note:$('mnote').value,sourceIds:[],createdAt:now()};try{await saveMarriageRemote(m);db.marriages.push(m);ensureRelation(m.person1,'spouse',m.person2);ensureRelation(m.person2,'spouse',m.person1);for(let r of db.relations.filter(r=>r.from===m.person1&&r.to===m.person2||r.from===m.person2&&r.to===m.person1))await saveRelationRemote(r);syncFamilyChildren();for(let f of db.familyUnits.filter(f=>f.marriageId===m.id))await saveFamilyRemote(f);await logAction('MARRIAGE_CREATED',personName(getPerson(m.person1))+' + '+personName(getPerson(m.person2)));closeModal();refreshAll()}catch(e){toast(e.message)}};$('modal').classList.add('show')}
-function renderFamilies(){syncFamilyChildren();$('familiesList').innerHTML=db.marriages.map(m=>{let f=db.familyUnits.find(x=>x.marriageId===m.id),a=getPerson(m.person1),b=getPerson(m.person2);return `<div class="card"><h3>👨‍👩‍👧 ${esc(personName(a))} + ${esc(personName(b))}</h3><p>${fmt(m.startDate)} — ${m.endDate?fmt(m.endDate):'დღემდე'} · ${esc(m.status)}</p><p>📍 ${esc(m.place||'—')}</p><p><b>შვილები:</b> ${(f?.childIds||[]).map(id=>esc(personName(getPerson(id)))).join(', ')||'—'}</p></div>`}).join('')||'<div class="card">ოჯახები ჯერ არ არის.</div>'}
+function openMarriageModal(){
+  const peopleOpts=db.people.map(p=>`<option value="${p.id}">${genderIcon(p.gender)} ${esc(personName(p))}</option>`).join('');
+  $('modalTitle').textContent='ახალი ოჯახი / ქორწინება';
+  $('modalBody').innerHTML=`<form id="marForm">
+    <div class="formgrid">
+      <div><label>პირი 1</label><select id="mp1"><option value="">— აირჩიე პირი 1 —</option>${peopleOpts}</select></div>
+      <div><label>პირი 2</label><select id="mp2"><option value="">— აირჩიე პირი 2 —</option>${peopleOpts}</select></div>
+      <div class="full"><div class="muted" id="marHint">პირი 1 და პირი 2 აუცილებლად განსხვავებული ადამიანები უნდა იყვნენ.</div></div>
+      <div><label>დაწყება</label><input type="date" id="ms"></div>
+      <div><label>დასასრული</label><input type="date" id="me"></div>
+      <div><label>სტატუსი</label><select id="mst"><option value="married">დაქორწინებული</option><option value="divorced">განქორწინებული</option><option value="widowed">ქვრივი/ქვრივი ქალი</option><option value="separated">ცალკე ცხოვრობენ</option><option value="unknown">უცნობია</option></select></div>
+      <div><label>ადგილი</label><input id="mplace" placeholder="მაგ.: თბილისი"></div>
+      <div class="full"><label>შენიშვნა</label><textarea id="mnote"></textarea></div>
+    </div>
+    <div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button><button class="primary">შენახვა</button></div>
+  </form>`;
+  const refreshMarriageChoices=()=>{
+    const a=$('mp1'),b=$('mp2');
+    const av=a.value,bv=b.value;
+    [...b.options].forEach(o=>{o.disabled=!!av&&o.value===av});
+    [...a.options].forEach(o=>{o.disabled=!!bv&&o.value===bv});
+    if(a.value===b.value&&a.value){b.value='';}
+    $('marHint').textContent=a.value&&b.value
+      ? `არჩეულია: ${personName(getPerson(a.value))} + ${personName(getPerson(b.value))}`
+      : 'პირი 1 და პირი 2 აუცილებლად განსხვავებული ადამიანები უნდა იყვნენ.';
+  };
+  $('mp1').addEventListener('change',refreshMarriageChoices);
+  $('mp2').addEventListener('change',refreshMarriageChoices);
+  $('mst').addEventListener('change',()=>{
+    const isDiv=$('mst').value==='divorced';
+    $('me').required=isDiv;
+    $('me').parentElement.querySelector('label').textContent=isDiv?'დასასრული (განქორწინების თარიღი)':'დასასრული';
+  });
+  $('marForm').onsubmit=async e=>{
+    e.preventDefault();
+    const p1=$('mp1').value,p2=$('mp2').value;
+    if(!p1||!p2)return toast('ორივე პირი უნდა აირჩიო');
+    if($('mst').value==='divorced'&&!$('me').value)return toast('⚠️ განქორწინებული სტატუსისთვის მიუთითე განქორწინების თარიღი');
+    if(p1===p2)return toast('❌ ერთი და იგივე ადამიანი ორივე ველში ვერ იქნება');
+    const exists=db.marriages.some(m=>(m.person1===p1&&m.person2===p2)||(m.person1===p2&&m.person2===p1));
+    if(exists)return toast('⚠️ ამ ორ ადამიანს შორის ოჯახი/ქორწინება უკვე არსებობს. დუბლირებული ჩანაწერი არ შეიქმნება.');
+    let m={id:uid('MAR'),person1:p1,person2:p2,startDate:$('ms').value,endDate:$('me').value,status:$('mst').value,place:$('mplace').value,note:$('mnote').value,createdAt:now()};
+    try{
+      await saveMarriageRemote(m);
+      db.marriages.push(m);
+      ensureRelation(m.person1,'spouse',m.person2);
+      ensureRelation(m.person2,'spouse',m.person1);
+      for(let r of db.relations.filter(r=>(r.from===m.person1&&r.to===m.person2)||(r.from===m.person2&&r.to===m.person1)))await saveRelationRemote(r);
+      syncFamilyChildren();
+      for(let f of db.familyUnits.filter(f=>f.marriageId===m.id))await saveFamilyRemote(f);
+      await logAction('MARRIAGE_CREATED',personName(getPerson(m.person1))+' + '+personName(getPerson(m.person2)));
+      closeModal();refreshAll();
+    }catch(e){toast(e.message)}
+  };
+  $('modal').classList.add('show');
+  refreshMarriageChoices();
+}
+
+function marriageStatusText(s){return ({married:'დაქორწინებული',divorced:'განქორწინებული',widowed:'დაქვრივებული',separated:'ცალკე ცხოვრობენ',unknown:'უცნობია'})[s]||s||'უცნობია'}
+function renderFamilies(){syncFamilyChildren();$('familiesList').innerHTML=db.marriages.map(m=>{let f=db.familyUnits.find(x=>x.marriageId===m.id),a=getPerson(m.person1),b=getPerson(m.person2);return `<div class="card"><h3>👨‍👩‍👧 ${esc(personName(a))} + ${esc(personName(b))}</h3><p>${fmt(m.startDate)} — ${m.endDate?fmt(m.endDate):'დღემდე'} · <b>${esc(marriageStatusText(m.status))}</b></p><p>📍 ${esc(m.place||'—')}</p><p><b>შვილები:</b> ${(f?.childIds||[]).map(id=>esc(personName(getPerson(id)))).join(', ')||'—'}</p></div>`}).join('')||'<div class="card">ოჯახები ჯერ არ არის.</div>'}
 function renderTimeline(){let ev=[];db.people.forEach(p=>{if(p.birthDate)ev.push({date:p.birthDate,title:'დაბადება',who:personName(p)});if(p.deathDate)ev.push({date:p.deathDate,title:'გარდაცვალება',who:personName(p)})});db.marriages.forEach(m=>{if(m.startDate)ev.push({date:m.startDate,title:'ქორწინება',who:personName(getPerson(m.person1))+' + '+personName(getPerson(m.person2))});if(m.endDate)ev.push({date:m.endDate,title:m.status==='divorced'?'განქორწინება':'ქორწინების დასრულება',who:personName(getPerson(m.person1))+' + '+personName(getPerson(m.person2))})});ev.sort((a,b)=>a.date.localeCompare(b.date));$('timelineList').innerHTML=ev.map(e=>`<div class="card"><b>${fmt(e.date)}</b><h3>${esc(e.title)}</h3><p>${esc(e.who)}</p></div>`).join('')||'<div class="card">Timeline ცარიელია.</div>'}
 function openSourceModal(){let opts=db.people.map(p=>`<option value="${p.id}">${esc(personName(p))}</option>`).join('');$('modalTitle').textContent='Source / Evidence';$('modalBody').innerHTML=`<form id="srcForm"><div class="formgrid"><div><label>სათაური</label><input id="stitle" required></div><div><label>ტიპი</label><select id="stype"><option>document</option><option>photo</option><option>archive</option><option>DNA</option><option>website</option><option>video</option><option>oral_history</option></select></div><div><label>სტატუსი</label><select id="sstatus"><option>confirmed</option><option>probable</option><option>unverified</option></select></div><div><label>დაკავშირებული ადამიანი</label><select id="sperson"><option value="">—</option>${opts}</select></div><div class="full"><label>URL</label><input id="surl"></div><div class="full"><label>აღწერა</label><textarea id="sdesc"></textarea></div></div><div class="actions"><button type="button" onclick="closeModal()">გაუქმება</button><button class="primary">შენახვა</button></div></form>`;$('srcForm').onsubmit=async e=>{e.preventDefault();let s={id:uid('SRC'),title:$('stitle').value,type:$('stype').value,status:$('sstatus').value,personId:$('sperson').value,url:$('surl').value,description:$('sdesc').value,createdAt:now()};try{await saveSourceRemote(s);db.sources.push(s);await logAction('SOURCE_CREATED',s.title);closeModal();refreshAll()}catch(e){toast(e.message)}};$('modal').classList.add('show')}
 function renderSources(){$('sourcesList').innerHTML=db.sources.map(s=>`<div class="card"><h3>📚 ${esc(s.title)}</h3><p>${esc(s.type)} · ${esc(s.status)}</p><p>${esc(s.description||'')}</p>${s.url?`<a target="_blank" href="${safeUrl(s.url)}">🔗 გახსნა</a>`:''}</div>`).join('')||'<div class="card">Evidence ჯერ არ არის.</div>'}
@@ -467,9 +689,132 @@ function openRequestModal(){let from=db.people.map(p=>`<option value="${p.id}">$
 function requestCanApprove(r){return currentProfile&&(currentProfile.role==='admin'||currentProfile.role==='family_admin'||r.to_person===currentProfile.person_id)}
 async function approveRequest(id,yes){let r=db.requests.find(x=>x.id===id);if(!r)return;if(!requestCanApprove(r))return toast('ამ მოთხოვნის დადასტურების უფლება არ გაქვს');try{let {error}=await supa.from('relationship_requests').update({status:yes?'approved':'rejected'}).eq('id',id).eq('family_id',currentProfile.family_id);if(error)throw error;if(yes){ensureRelation(r.from_person,r.type,r.to_person);let nr=db.relations.find(x=>x.from===r.from_person&&x.to===r.to_person&&x.type===r.type);await saveRelationRemote(nr)}r.status=yes?'approved':'rejected';await logAction(yes?'RELATION_REQUEST_APPROVED':'RELATION_REQUEST_REJECTED',id);refreshAll();toast(yes?'კავშირი დადასტურდა':'მოთხოვნა უარყოფილია')}catch(e){toast(e.message)}}
 function renderRequests(){let mine=db.requests;$('requestsList').innerHTML=mine.map(r=>{let can=requestCanApprove(r);return `<div class="card requestCard"><b>${esc(r.type)}</b><p>${esc(personName(getPerson(r.from_person)))} → ${esc(personName(getPerson(r.to_person)))}</p><p>სტატუსი: <span class="pill">${esc(r.status)}</span></p>${r.note?`<p>${esc(r.note)}</p>`:''}${r.status==='pending'&&can?`<button class="small success" onclick="approveRequest('${r.id}',true)">✓ დადასტურება</button> <button class="small danger" onclick="approveRequest('${r.id}',false)">✕ უარყოფა</button>`:''}</div>`}).join('')||'<p class="muted">მოთხოვნები არ არის.</p>'}
-async function openUserModal(){if(currentProfile?.role!=='admin'&&currentProfile?.role!=='family_admin')return toast('Admin უფლება საჭიროა');$('modalTitle').textContent='მომხმარებლის დამატება';$('modalBody').innerHTML=`<p>მომხმარებელი თავად უნდა დარეგისტრირდეს Auth-ით. Admin აქედან მართავს დამტკიცებასა და როლს.</p><div class="notice">პაროლი ამ პროგრამაში არ ინახება. პაროლებს მართავს Supabase Auth.</div><button onclick="page('admin',document.querySelectorAll('#nav button')[9]);closeModal()">Admin Panel</button>`;$('modal').classList.add('show')}
-async function renderAdmin(){if(!supa||!session)return;$('adminContent').innerHTML='<div class="card">⏳ მომხმარებლები იტვირთება...</div>';let {data,error}=await supa.from('profiles').select('*').order('created_at',{ascending:true});if(error){$('adminContent').innerHTML='<div class="card dangerText">'+esc(error.message)+'</div>';return}if(currentProfile?.role!=='admin'){$('adminContent').innerHTML='<div class="card">მომხმარებლების ადმინისტრირება მხოლოდ Super Admin-ს შეუძლია.</div>';return}$('adminContent').innerHTML=`<div class="card tablewrap"><table class="table"><thead><tr><th>სახელი</th><th>E-mail</th><th>როლი</th><th>Approved</th><th></th></tr></thead><tbody>${(data||[]).map(u=>`<tr><td>${esc(u.display_name||'—')}</td><td>${esc(u.email||'—')}</td><td><select id="role_${u.id}"><option value="user" ${u.role==='user'?'selected':''}>user</option><option value="family_admin" ${u.role==='family_admin'?'selected':''}>family_admin</option><option value="admin" ${u.role==='admin'?'selected':''}>admin</option></select></td><td><input type="checkbox" id="app_${u.id}" ${u.approved?'checked':''}></td><td><button class="small primary" onclick="saveUser('${u.id}')">შენახვა</button></td></tr>`).join('')}</tbody></table></div>`}
-async function saveUser(id){if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');let role=$('role_'+id).value,approved=$('app_'+id).checked;try{let {error}=await supa.from('profiles').update({role,approved}).eq('id',id);if(error)throw error;await logAction('USER_UPDATED',id);toast('მომხმარებელი განახლდა');renderAdmin()}catch(e){toast(e.message)}}
+async function openUserModal(){
+  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin-ს შეუძლია მომხმარებლების მართვა');
+  $('modalTitle').textContent='＋ მომხმარებელი';
+  $('modalBody').innerHTML=`<div class="notice ok"><b>მომხმარებლის ანგარიშის შექმნა</b><br>ახალი თანამშრომელი თავად რეგისტრირდება საკუთარი E-mail/პაროლით. პაროლი ამ პროგრამაში არ ინახება.</div><p>რეგისტრაციის შემდეგ ანგარიში გამოჩნდება Admin → მომხმარებლების მართვაში. იქ შეძლებ მიღებას, უარყოფას, როლის შეცვლას, წვდომის გაუქმებას ან Auth ანგარიშის ცალკე წაშლას.</p><div class="actions"><button onclick="closeModal();authTab('register');showAuth()">📝 რეგისტრაციის გვერდი</button><button class="primary" onclick="closeModal();page('admin',document.querySelectorAll('#nav button')[9]);renderAdmin()">⚙️ Admin Panel</button></div>`;
+  $('modal').classList.add('show');
+}
+function adminStatus(u){
+  const st=String(u.account_status||u.status||'').toLowerCase();
+  if(st==='deceased'||st==='dead')return ['⚰️ გარდაცვლილი','statusDead'];
+  if(st==='deleted')return ['🗑️ წაშლილი','statusRejected'];
+  if(u.approved===true)return ['✅ მიღებულია','statusActive'];
+  return ['⛔ წვდომა გაუქმებულია','statusBlocked'];
+}
+function linkedPersonForUser(u){
+  if(u.person_id)return getPerson(u.person_id);
+  if(u.email){let e=u.email.toLowerCase();return db.people.find(p=>String(p.email||'').toLowerCase()===e)}
+  return null;
+}
+function adminPersonCell(u){
+  const p=linkedPersonForUser(u);
+  if(p)return `<span class="personLink" onclick="openProfile('${p.id}')">👤 ${esc(personName(p))}<br><small>ID: ${esc(p.personalId||'—')}</small></span>`;
+  return '<span class="muted">👤 პიროვნებასთან არ არის დაკავშირებული</span>';
+}
+async function renderAdmin(){
+  if(!supa||!session)return;
+  $('adminContent').innerHTML='<div class="card">⏳ მომხმარებლები იტვირთება...</div>';
+  let {data,error}=await supa.from('profiles').select('*').order('created_at',{ascending:true});
+  if(error){$('adminContent').innerHTML='<div class="card dangerText">'+esc(error.message)+'</div>';return}
+  if(currentProfile?.role!=='admin'){
+    $('adminContent').innerHTML='<div class="card"><h3>🔒 Admin უფლებებია საჭირო</h3><p>მომხმარებლების სრული ადმინისტრირება მხოლოდ Admin როლს შეუძლია.</p></div>';return;
+  }
+  const users=data||[];
+  $('adminContent').innerHTML=`
+    <div class="card">
+      <h3>👑 Admin — მომხმარებლების მართვა</h3>
+      <p class="muted">ანგარიშის გაუქმება და Person-ის წაშლა ერთმანეთისგან დამოუკიდებელია.</p>
+      <div class="notice"><b>⚰️ გარდაცვალება:</b> Person, Personal ID, ფოტო, ისტორია და ყველა ნათესაობა რჩება. მხოლოდ Auth ანგარიშის წვდომა იბლოკება.<br><b>🗑️ ანგარიშის წაშლა:</b> იშლება მხოლოდ Auth ანგარიში; Person და გენეალოგიური მონაცემები რჩება.<br><b>📧 E-mail:</b> Auth ანგარიშის საბოლოო წაშლის შემდეგ E-mail ხელახლა რეგისტრაციისთვის თავისუფლდება.</div>
+      <div class="adminHint">⚠️ Auth ანგარიშის საბოლოო წაშლა შესრულდება უსაფრთხო Supabase Edge Function-ით. Publishable key-ით HTML პირდაპირ Auth მომხმარებელს ვერ წაშლის.</div>
+    </div>
+    <div class="card tablewrap" style="margin-top:12px">
+      <table class="table"><thead><tr><th>სახელი</th><th>Person</th><th>E-mail</th><th>როლი</th><th>სტატუსი</th><th>მოქმედება</th></tr></thead><tbody>
+      ${users.map(u=>{
+        const [st,sc]=adminStatus(u);
+        const self=u.id===session.user.id;
+        return `<tr>
+          <td><span class="adminUserName">${esc(u.display_name||'—')}</span></td>
+          <td>${adminPersonCell(u)}</td>
+          <td>${esc(u.email||'—')}</td>
+          <td><select id="role_${u.id}"><option value="user" ${u.role==='user'?'selected':''}>User</option><option value="family_admin" ${u.role==='family_admin'?'selected':''}>Family Admin</option><option value="admin" ${u.role==='admin'?'selected':''}>Admin</option></select></td>
+          <td><span class="${sc}">${st}</span></td>
+          <td><div class="adminActions">
+            <button class="small success" onclick="setUserApproval('${u.id}',true)">✓ მიღება</button>
+            <button class="small danger" onclick="setUserApproval('${u.id}',false)">✕ უარყოფა</button>
+            <button class="small primary" onclick="saveUser('${u.id}')">შენახვა</button>
+            ${self?'':'<button class="small" onclick="markUserDeceased(\''+u.id+'\')">⚰️ გარდაცვალება</button>'}
+            ${self?'':'<button class="small danger" onclick="deleteAuthAccount(\''+u.id+'\')">🗑️ ანგარიშის წაშლა</button>'}
+          </div></td>
+        </tr>`;
+      }).join('')}</tbody></table></div>`;
+}
+async function setUserApproval(id,approved){
+  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');
+  if(id===session.user.id&&!approved)return toast('საკუთარი მიმდინარე ანგარიშის წვდომა აქედან არ გააუქმო');
+  try{
+    let {error}=await supa.from('profiles').update({approved}).eq('id',id);
+    if(error)throw error;
+    await logAction(approved?'USER_APPROVED':'USER_REJECTED',id);
+    toast(approved?'✅ მომხმარებელი მიღებულია':'✕ მომხმარებელს წვდომა გაუქმდა');
+    renderAdmin();
+  }catch(e){toast('სტატუსის შეცვლა ვერ მოხერხდა: '+e.message)}
+}
+async function saveUser(id){
+  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');
+  const role=$('role_'+id)?.value;
+  if(!role)return;
+  try{
+    let {error}=await supa.from('profiles').update({role}).eq('id',id);
+    if(error)throw error;
+    await logAction('USER_ROLE_UPDATED',role+' / '+id);
+    toast('მომხმარებლის როლი განახლდა');
+    renderAdmin();
+  }catch(e){toast('როლის შენახვა ვერ მოხერხდა: '+e.message)}
+}
+async function markUserDeceased(id){
+  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');
+  if(id===session.user.id)return toast('საკუთარ მიმდინარე ანგარიშზე ეს მოქმედება არ შეიძლება');
+  const u=await getAdminProfile(id);
+  if(!u)return;
+  const p=linkedPersonForUser(u);
+  const msg=p?`⚰️ ${personName(p)} — გარდაცვლილად მონიშვნა?\n\nPerson, ფოტო, ისტორია და ნათესაობები არ წაიშლება. მომხმარებლის Auth წვდომა გაუქმდება.`:`⚰️ ${u.display_name||u.email||'მომხმარებელი'} — გარდაცვლილად მონიშვნა?\n\nPerson-თან კავშირი ამჟამად ვერ მოიძებნა.`;
+  if(!confirm(msg))return;
+  try{
+    // ძირითადი უსაფრთხო მოქმედება: აპის წვდომის გაუქმება. თუ account_status სვეტი არსებობს, ასევე ინახავს მდგომარეობას.
+    let {error}=await supa.from('profiles').update({approved:false}).eq('id',id);
+    if(error)throw error;
+    try{await supa.from('profiles').update({account_status:'deceased'}).eq('id',id)}catch(_){}
+    await logAction('USER_DECEASED_ACCESS_REVOKED',id);
+    toast('⚰️ წვდომა გაუქმდა. Person და გენეალოგიური მონაცემები შენარჩუნებულია.');
+    renderAdmin();
+  }catch(e){toast('გარდაცვალების რეჟიმის შენახვა ვერ მოხერხდა: '+e.message)}
+}
+async function getAdminProfile(id){
+  const {data,error}=await supa.from('profiles').select('*').eq('id',id).maybeSingle();
+  if(error){toast(error.message);return null}return data;
+}
+async function deleteAuthAccount(id){
+  if(currentProfile?.role!=='admin')return toast('მხოლოდ Super Admin');
+  if(id===session.user.id)return toast('საკუთარი Admin ანგარიშის წაშლა აქედან აკრძალულია');
+  const u=await getAdminProfile(id);
+  if(!u)return;
+  if(!confirm(`🗑️ ნამდვილად წავშალოთ მხოლოდ Auth ანგარიში?\n\nE-mail: ${u.email||'—'}\n\nPerson, Personal ID, ფოტო, ისტორია და ყველა ნათესაობა დარჩება.\nAuth ანგარიშის წაშლის შემდეგ ეს E-mail ხელახლა რეგისტრაციისთვის თავისუფალი გახდება.`))return;
+  try{
+    const base=(config().url||SUPABASE_URL).replace(/\/$/,'');
+    const fn=(config().adminFunction||'admin-user-action').trim();
+    const token=session?.access_token;
+    if(!token)throw new Error('Admin Session token ვერ მოიძებნა');
+    const res=await fetch(`${base}/functions/v1/${fn}`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token,'apikey':config().key||SUPABASE_PUBLISHABLE_KEY},body:JSON.stringify({action:'delete_auth_user',user_id:id})});
+    const text=await res.text();let out={};try{out=JSON.parse(text)}catch{}
+    if(!res.ok)throw new Error(out.error||out.message||text||('HTTP '+res.status));
+    await logAction('AUTH_ACCOUNT_DELETED',id);
+    toast('🗑️ Auth ანგარიში წაიშალა. Person და გენეალოგიური მონაცემები დარჩა.');
+    renderAdmin();
+  }catch(e){
+    toast('Auth ანგარიშის წაშლა ვერ მოხერხდა: '+e.message+' — საჭიროა admin-user-action Edge Function.');
+  }
+}
 function renderAudit(){$('auditTable').innerHTML=db.audit.map(a=>`<tr><td>${fmt(a.at||a.created_at)}</td><td>${esc(a.action)}</td><td>${esc(a.detail||'')}</td></tr>`).join('')||'<tr><td colspan="3">Audit ცარიელია.</td></tr>'}
 function renderStats(){$('stats').innerHTML=[['👤 ადამიანები',db.people.length],['🔗 კავშირები',db.relations.length],['👨‍👩‍👧 ოჯახები',db.marriages.length],['📚 Sources',db.sources.length],['✉️ შეტყობინებები',db.messages.length],['🤝 მოთხოვნები',db.requests.length]].map(x=>`<div class="card"><div class="muted">${x[0]}</div><div class="stat">${x[1]}</div></div>`).join('')}
 function refreshAll(){renderStats();renderPeople();renderFamilies();renderTimeline();renderRelations();renderRequests();renderSources();renderMessages();renderAdmin();renderAudit();fillTreeCenter();if($('tree').classList.contains('active'))renderTree();$('connectionNotice').innerHTML=supa&&session?'<div class="notice ok">☁️ Supabase დაკავშირებულია. მონაცემები მოდის PostgreSQL-დან.</div>':'<div class="notice">🔌 Supabase ჯერ არ არის დაკავშირებული.</div>'}
@@ -479,6 +824,6 @@ function closeModal(){$('modal').classList.remove('show')}
 $('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 function downloadSVG(){let svg=$('treeSvg').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(svg)],{type:'image/svg+xml'}));a.download='Genealogy_Tree_V9.svg';a.click()}
 function downloadPNG(){let svg=$('treeSvg').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');let xml=new XMLSerializer().serializeToString(svg),img=new Image();img.onload=()=>{let c=document.createElement('canvas');c.width=treeState.width;c.height=treeState.height;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0);let a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='Genealogy_Tree_V9.png';a.click()};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml)}
-function printTree(){let clone=$('treeViewport').cloneNode(true),w=window.open('','_blank');w.document.write(`<html><head><title>Genealogy Tree V9</title><style>body{margin:0;font-family:Arial}#treeViewport{height:auto;overflow:visible;border:0;position:relative}.treeCanvas{position:relative!important;transform:none!important;left:0!important;top:0!important}.treeSvg{position:absolute}.node{position:absolute}</style></head><body>${clone.outerHTML}</body></html>`);w.document.close();setTimeout(()=>w.print(),500)}
+function printTree(){let clone=$('treeViewport').cloneNode(true),w=window.open('','_blank');if(!w)return toast('ბეჭდვის ფანჯარა დაბლოკილია');w.document.write(`<html><head><title>Genealogy Tree V9</title><style>@page{size:A4 landscape;margin:8mm}html,body{margin:0;padding:0;font-family:Arial;background:#fff}#treeViewport{height:auto!important;min-height:0!important;overflow:visible!important;border:0!important;position:relative!important;width:100%!important}.treeCanvas{position:relative!important;transform:none!important;left:0!important;top:0!important;break-inside:avoid;page-break-inside:avoid}.treeSvg{position:absolute!important;left:0!important;top:0!important;overflow:visible!important}.treeNodes{position:absolute!important;left:0!important;top:0!important}.node{position:absolute!important;break-inside:avoid!important;page-break-inside:avoid!important;overflow:visible!important}.node img{display:block!important;width:55px!important;height:55px!important;object-fit:cover!important;break-inside:avoid!important;page-break-inside:avoid!important}.node,.node img{-webkit-print-color-adjust:exact;print-color-adjust:exact}@media print{*{break-inside:avoid}.node{break-before:auto;break-after:auto}img{break-inside:avoid!important;page-break-inside:avoid!important}}</style></head><body>${clone.outerHTML}</body></html>`);w.document.close();setTimeout(()=>{w.focus();w.print()},800)}
 (async function boot(){let t=localStorage.getItem(THEME_KEY)||'light';document.body.classList.toggle('dark',t==='dark');updateThemeButton();if(!localStorage.getItem(SUPA_CFG))saveConfig({url:SUPABASE_URL,key:SUPABASE_PUBLISHABLE_KEY});await initSupabase()})();
-</script></body></html>
+</script></body></html>2
